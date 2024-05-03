@@ -173,7 +173,7 @@ CREATE TABLE IF NOT EXISTS public.persona (
 	apellido character varying (50),
 	tipo_identificacion int,
 	num_identificacion character varying (20),
-	genero character,
+	genero boolean,
 	fecha_nacimiento date,
 	email character varying (255),
 	direccion character varying (255),

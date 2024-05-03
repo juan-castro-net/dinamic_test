@@ -17,7 +17,9 @@ from repository_builder import RepositoryBuilder
 from jdbc_repository_builder import JdbcRepositoryBuilder
 from controller_builder import ControllerBuilder
 
-    
+# from backend_tester import BackendTester
+
+
 parameters = {}
 
 parameters["db_execute"] = True
@@ -60,46 +62,21 @@ jdbc_repository_builder.build()
 controller_builder = ControllerBuilder(parameters)
 controller_builder.build()
 
+os.chdir(parameters["source_directory"])
+os.system("mvn clean install") 
+os.system("mvn spring-boot:run") 
 
+# backend_tester = BackendTester(parameters)
+# backend_tester.test()
 
 
 # import subprocess
-
 # command = "cd"
 # subprocess.run([command, "/media/usco/data1/dev/workspace-sts/test"]) 
-
 # command = "mvn"
 # # pom_filename = "/media/usco/data1/dev/workspace-sts/test/pom.xml"
 # pom_filename = "pom.xml"
 # subprocess.run([command, "spring-boot:run", pom_filename]) 
-
-
-
-
-import os
-
-os.chdir("/media/usco/data1/dev/workspace-sts/test")
-# os.system("cd /media/usco/data1/dev/workspace-sts/test") 
-
-# os.system("mvn clean pom.xml")
-os.system("mvn spring-boot:run") 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

@@ -66,10 +66,10 @@
         }
       ],
       "relations": [],
-        	"grants":[
-            	{"test_admin":["CREATE", "READ", "UPDATE", "DELETE"]},
-            	{"test_client":["READ"]}
-        	]
+      "grants":[
+          {"test_admin":["CREATE", "READ", "UPDATE", "DELETE"]},
+          {"test_client":["READ"]}
+      ]
     },
     {
       "name": "pais",
@@ -1055,10 +1055,10 @@
           "referenced_attribute": "id"
         }
       ],
-        	"grants":[
-            	{"test_admin":["CREATE", "READ", "UPDATE", "DELETE"]},
-            	{"test_client":["READ"]}
-        	]
+       	"grants":[
+           	{"test_admin":["CREATE", "READ", "UPDATE", "DELETE"]},
+           	{"test_client":["READ"]}
+       	]
     },
     {
       "name": "modulo",

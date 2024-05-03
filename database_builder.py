@@ -42,7 +42,7 @@ class DataBaseBuilder:
         self.db_postgres = {
             "int":"int",
             "string":"character varying",
-            "boolean": "character",
+            "boolean": "boolean",
             "date":"date",
             "timestamp":"timestamp"
             }
