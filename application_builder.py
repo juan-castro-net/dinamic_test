@@ -9,13 +9,15 @@ Created on Thu May  2 09:05:47 2024
 import os
 import json
 
+from utils import Utils
 
 class ApplicationBuilder:
     
     def __init__(self, parameters):
         self.parameters = parameters
         
-        self.base_path = self.parameters["base_path"]
+        # self.base_path = self.parameters["base_path"]
+        self.source_directory = self.parameters["source_directory"]
         # self.package_name = self.parameters["package_name"]
         
         self.model_filename = self.parameters["model_filename"]
@@ -24,7 +26,6 @@ class ApplicationBuilder:
         self.package_name = self.data["package_name"] + "." + self.data["app_name"]
         
         self.template_directory = os.path.join(
-            self.parameters["base_path"],
             "templates"
             )
         
@@ -41,27 +42,27 @@ class ApplicationBuilder:
     def get_app_filename(self, folder_name, class_name):
         model_filename = os.path.join(
             folder_name,
-            class_name + ".java"
+            "{}Application.java".format(class_name)
             )
         
         return model_filename
     
     
 
-    def create_folder(self):
+    # def create_folder(self):
         
-        folder_name = os.path.join(
-            self.base_path,
-            "src",
-            "main",
-            "java",
-            self.package_name
-            )
+    #     folder_name = os.path.join(
+    #         self.base_path,
+    #         "src",
+    #         "main",
+    #         "java",
+    #         self.package_name
+    #         )
     
-        if os.path.exists(folder_name) == False:
-            os.makedirs(folder_name)
+    #     if os.path.exists(folder_name) == False:
+    #         os.makedirs(folder_name)
         
-        return folder_name
+    #     return folder_name
     
     
     def get_template_filename(self, template_name):
@@ -90,7 +91,13 @@ class ApplicationBuilder:
         app_name_camelcase = app_name[0].upper() + app_name[1:]
         # app_name_lower = app_name.lower()
         
-        folder_name = self.create_folder()
+        # folder_name = self.create_folder()
+        utils = Utils()
+        folder_name = utils.create_folder(
+            "", 
+            self.package_name, 
+            self.source_directory
+            )
         
         template_filename = self.get_template_filename("Application")
         f = open(template_filename, "r")

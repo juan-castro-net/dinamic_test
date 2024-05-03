@@ -9,13 +9,16 @@ Created on Thu May  2 09:06:16 2024
 import os
 import json
 
+from utils import Utils
+
 
 class ControllerBuilder:
     
     def __init__(self, parameters):
         self.parameters = parameters
         
-        self.base_path = self.parameters["base_path"]
+        # self.base_path = self.parameters["base_path"]
+        self.source_directory = self.parameters["source_directory"]
         # self.package_name = self.parameters["package_name"]
         self.model_filename = self.parameters["model_filename"]
         
@@ -23,7 +26,6 @@ class ControllerBuilder:
         self.package_name = self.data["package_name"] + "." + self.data["app_name"]
                 
         self.template_directory = os.path.join(
-            self.parameters["base_path"],
             "templates"
             )
         
@@ -59,22 +61,22 @@ class ControllerBuilder:
         return getter_list
 
 
-    def create_folder(self, class_name, directory_name):
+    # def create_folder(self, class_name, directory_name):
         
-        folder_name = os.path.join(
-            self.base_path,
-            "src",
-            "main",
-            "java",
-            self.package_name,
-            class_name.lower(),
-            directory_name
-            )
+    #     folder_name = os.path.join(
+    #         self.base_path,
+    #         "src",
+    #         "main",
+    #         "java",
+    #         self.package_name,
+    #         class_name.lower(),
+    #         directory_name
+    #         )
     
-        if os.path.exists(folder_name) == False:
-            os.makedirs(folder_name)
+    #     if os.path.exists(folder_name) == False:
+    #         os.makedirs(folder_name)
         
-        return folder_name
+    #     return folder_name
     
     
     def get_template_filename(self, template_name):
@@ -118,8 +120,15 @@ class ControllerBuilder:
             class_name_lower = class_name.lower()
             object_name = class_name_lower
             
-            directory_name = "controller"
-            folder_name = self.create_folder(class_name, directory_name)
+            utils = Utils()
+            folder_name = utils.create_folder(
+                class_name, 
+                self.package_name, 
+                self.source_directory
+                )
+            
+            # directory_name = "controller"
+            # folder_name = self.create_folder(class_name, directory_name)
             
             # folder_name = os.path.join(
             #     base_path,

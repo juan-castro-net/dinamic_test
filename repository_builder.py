@@ -9,13 +9,16 @@ Created on Thu May  2 09:06:40 2024
 import os
 import json
 
+from utils import Utils
+
 
 class RepositoryBuilder:
     
     def __init__(self, parameters):
         self.parameters = parameters
         
-        self.base_path = self.parameters["base_path"]
+        # self.base_path = self.parameters["base_path"]
+        self.source_directory = self.parameters["source_directory"]
         # self.package_name = self.parameters["package_name"]
         self.model_filename = self.parameters["model_filename"]
         
@@ -23,7 +26,6 @@ class RepositoryBuilder:
         self.package_name = self.data["package_name"] + "." + self.data["app_name"]
         
         self.template_directory = os.path.join(
-            self.parameters["base_path"],
             "templates"
             )
         
@@ -63,22 +65,22 @@ class RepositoryBuilder:
         return jdbc_repository_filename
         
     
-    def create_folder(self, class_name, directory_name):
+    # def create_folder(self, class_name, directory_name):
         
-        folder_name = os.path.join(
-            self.base_path,
-            "src",
-            "main",
-            "java",
-            self.package_name,
-            class_name.lower(),
-            directory_name
-            )
+    #     folder_name = os.path.join(
+    #         self.base_path,
+    #         "src",
+    #         "main",
+    #         "java",
+    #         self.package_name,
+    #         class_name.lower(),
+    #         directory_name
+    #         )
     
-        if os.path.exists(folder_name) == False:
-            os.makedirs(folder_name)
+    #     if os.path.exists(folder_name) == False:
+    #         os.makedirs(folder_name)
         
-        return folder_name
+    #     return folder_name
     
     
     def get_template_filename(self, template_name):
@@ -111,26 +113,13 @@ class RepositoryBuilder:
             class_name_lower = class_name.lower()
             class_name_camelcase = class_name[0].upper() + class_name[1:]
             
-            directory_name = "repository"
-            folder_name = self.create_folder(class_name, directory_name)
+            utils = Utils()
+            folder_name = utils.create_folder(
+                class_name, 
+                self.package_name, 
+                self.source_directory
+                )
             
-            # folder_name = os.path.join(
-            #     base_path,
-            #     "src",
-            #     package_name,
-            #     class_name_lower,
-            #     "repository"
-            #     )
-
-            
-            # if os.path.exists(folder_name) == False:
-            #     os.makedirs(folder_name)
-
-
-            # template_filename = os.path.join(
-            #     self.template_directory,
-            #     "Repository.java"
-            #     )
             
             template_filename = self.get_template_filename("Repository")
             
@@ -167,31 +156,6 @@ class RepositoryBuilder:
 
 
 
-
-# base_path = "/home/usco/Documents/test/pruebas/pruebas"
-# package_name = "org.usco.test"
-
-# base_directory = "/home/usco/Documents/test/pruebas/pruebas"
-
-# template_directory = os.path.join(
-#     base_directory,
-#     "templates"
-#     )
-
-# data_type_dict = {
-#     "int": "int",
-#     "string":"String",
-#     "date":"Date",
-#     "timestamp":"TimeStamp",
-#     "boolean":"boolean"
-#     }
-
-
-# model_filename = "/home/usco/Documents/test/pruebas/pruebas2/pruebas1.json"
-# f = open(model_filename)
-# data = json.load(f)
- 
-# # print(data)
 
 
 

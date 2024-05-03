@@ -19,12 +19,15 @@ class DataBaseBuilder:
         self.parameters = parameters
         
         self.db_execute = self.parameters["db_execute"]
-        self.base_path = self.parameters["base_path"]
-        self.package_name = self.parameters["package_name"]
+        # self.base_path = self.parameters["base_path"]
+        self.source_directory = self.parameters["source_directory"]
+        # self.package_name = self.parameters["package_name"]
         self.model_filename = self.parameters["model_filename"]
         
+        self.data = self.get_data()
+        self.package_name = self.data["package_name"] + "." + self.data["app_name"]
+        
         self.template_directory = os.path.join(
-            self.parameters["base_path"],
             "templates"
             )
         
@@ -56,7 +59,7 @@ class DataBaseBuilder:
         
         self.data = self.get_data()
         
-        self.app = self.data["app"]
+        self.app_name = self.data["app_name"]
         self.db_engine = self.data["db_engine"]
         self.db_host = self.data["db_host"]
         self.db_port = self.data["db_port"]

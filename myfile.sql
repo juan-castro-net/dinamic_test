@@ -1,8 +1,8 @@
-DROP DATABASE IF EXISTS pruebas1;
-DROP DATABASE IF EXISTS pruebas1;
-CREATE DATABASE pruebas1
+DROP DATABASE IF EXISTS test;
+DROP DATABASE IF EXISTS test;
+CREATE DATABASE test
  WITH
- OWNER = pruebas1
+ OWNER = test
  ENCODING = 'UTF8'
  TABLESPACE = pg_default
  CONNECTION LIMIT = -1;
@@ -18,9 +18,9 @@ WITH (
 OIDS=FALSE
 );
 ALTER TABLE IF EXISTS public.estado
- OWNER TO pruebas1;
-GRANT insert, select, update, delete ON TABLE estado TO pruebas_admin;
-GRANT select ON TABLE estado TO pruebas_client;
+ OWNER TO test;
+GRANT insert, select, update, delete ON TABLE estado TO test_admin;
+GRANT select ON TABLE estado TO test_client;
 
 DROP TABLE IF EXISTS public.pais;
 CREATE TABLE IF NOT EXISTS public.pais (
@@ -34,9 +34,9 @@ WITH (
 OIDS=FALSE
 );
 ALTER TABLE IF EXISTS public.pais
- OWNER TO pruebas1;
-GRANT insert, select, update, delete ON TABLE pais TO pruebas_admin;
-GRANT select ON TABLE pais TO pruebas_client;
+ OWNER TO test;
+GRANT insert, select, update, delete ON TABLE pais TO test_admin;
+GRANT select ON TABLE pais TO test_client;
 
 DROP TABLE IF EXISTS public.departamento;
 CREATE TABLE IF NOT EXISTS public.departamento (
@@ -55,9 +55,9 @@ WITH (
 OIDS=FALSE
 );
 ALTER TABLE IF EXISTS public.departamento
- OWNER TO pruebas1;
-GRANT insert, select, update, delete ON TABLE departamento TO pruebas_admin;
-GRANT select ON TABLE departamento TO pruebas_client;
+ OWNER TO test;
+GRANT insert, select, update, delete ON TABLE departamento TO test_admin;
+GRANT select ON TABLE departamento TO test_client;
 
 DROP TABLE IF EXISTS public.municipio;
 CREATE TABLE IF NOT EXISTS public.municipio (
@@ -76,9 +76,9 @@ WITH (
 OIDS=FALSE
 );
 ALTER TABLE IF EXISTS public.municipio
- OWNER TO pruebas1;
-GRANT insert, select, update, delete ON TABLE municipio TO pruebas_admin;
-GRANT select ON TABLE municipio TO pruebas_client;
+ OWNER TO test;
+GRANT insert, select, update, delete ON TABLE municipio TO test_admin;
+GRANT select ON TABLE municipio TO test_client;
 
 DROP TABLE IF EXISTS public.tipoentidad;
 CREATE TABLE IF NOT EXISTS public.tipoentidad (
@@ -95,9 +95,9 @@ WITH (
 OIDS=FALSE
 );
 ALTER TABLE IF EXISTS public.tipoentidad
- OWNER TO pruebas1;
-GRANT insert, select, update, delete ON TABLE tipoentidad TO pruebas_admin;
-GRANT select ON TABLE tipoentidad TO pruebas_client;
+ OWNER TO test;
+GRANT insert, select, update, delete ON TABLE tipoentidad TO test_admin;
+GRANT select ON TABLE tipoentidad TO test_client;
 
 DROP TABLE IF EXISTS public.entidad;
 CREATE TABLE IF NOT EXISTS public.entidad (
@@ -127,9 +127,9 @@ WITH (
 OIDS=FALSE
 );
 ALTER TABLE IF EXISTS public.entidad
- OWNER TO pruebas1;
-GRANT insert, select, update, delete ON TABLE entidad TO pruebas_admin;
-GRANT select ON TABLE entidad TO pruebas_client;
+ OWNER TO test;
+GRANT insert, select, update, delete ON TABLE entidad TO test_admin;
+GRANT select ON TABLE entidad TO test_client;
 
 DROP TABLE IF EXISTS public.perfil;
 CREATE TABLE IF NOT EXISTS public.perfil (
@@ -148,9 +148,9 @@ WITH (
 OIDS=FALSE
 );
 ALTER TABLE IF EXISTS public.perfil
- OWNER TO pruebas1;
-GRANT insert, select, update, delete ON TABLE perfil TO pruebas_admin;
-GRANT select ON TABLE perfil TO pruebas_client;
+ OWNER TO test;
+GRANT insert, select, update, delete ON TABLE perfil TO test_admin;
+GRANT select ON TABLE perfil TO test_client;
 
 DROP TABLE IF EXISTS public.tipo_identificacion;
 CREATE TABLE IF NOT EXISTS public.tipo_identificacion (
@@ -162,9 +162,9 @@ WITH (
 OIDS=FALSE
 );
 ALTER TABLE IF EXISTS public.tipo_identificacion
- OWNER TO pruebas1;
-GRANT insert, select, update, delete ON TABLE tipo_identificacion TO pruebas_admin;
-GRANT select ON TABLE tipo_identificacion TO pruebas_client;
+ OWNER TO test;
+GRANT insert, select, update, delete ON TABLE tipo_identificacion TO test_admin;
+GRANT select ON TABLE tipo_identificacion TO test_client;
 
 DROP TABLE IF EXISTS public.persona;
 CREATE TABLE IF NOT EXISTS public.persona (
@@ -193,9 +193,9 @@ WITH (
 OIDS=FALSE
 );
 ALTER TABLE IF EXISTS public.persona
- OWNER TO pruebas1;
-GRANT insert, select, update, delete ON TABLE persona TO pruebas_admin;
-GRANT select ON TABLE persona TO pruebas_client;
+ OWNER TO test;
+GRANT insert, select, update, delete ON TABLE persona TO test_admin;
+GRANT select ON TABLE persona TO test_client;
 
 DROP TABLE IF EXISTS public.usuario;
 CREATE TABLE IF NOT EXISTS public.usuario (
@@ -217,9 +217,9 @@ WITH (
 OIDS=FALSE
 );
 ALTER TABLE IF EXISTS public.usuario
- OWNER TO pruebas1;
-GRANT insert, select, update, delete ON TABLE usuario TO pruebas_admin;
-GRANT select ON TABLE usuario TO pruebas_client;
+ OWNER TO test;
+GRANT insert, select, update, delete ON TABLE usuario TO test_admin;
+GRANT select ON TABLE usuario TO test_client;
 
 DROP TABLE IF EXISTS public.usuario_perfil;
 CREATE TABLE IF NOT EXISTS public.usuario_perfil (
@@ -245,9 +245,9 @@ WITH (
 OIDS=FALSE
 );
 ALTER TABLE IF EXISTS public.usuario_perfil
- OWNER TO pruebas1;
-GRANT insert, select, update, delete ON TABLE usuario_perfil TO pruebas_admin;
-GRANT select ON TABLE usuario_perfil TO pruebas_client;
+ OWNER TO test;
+GRANT insert, select, update, delete ON TABLE usuario_perfil TO test_admin;
+GRANT select ON TABLE usuario_perfil TO test_client;
 
 DROP TABLE IF EXISTS public.sesion;
 CREATE TABLE IF NOT EXISTS public.sesion (
@@ -266,9 +266,9 @@ WITH (
 OIDS=FALSE
 );
 ALTER TABLE IF EXISTS public.sesion
- OWNER TO pruebas1;
-GRANT insert, select, update, delete ON TABLE sesion TO pruebas_admin;
-GRANT select ON TABLE sesion TO pruebas_client;
+ OWNER TO test;
+GRANT insert, select, update, delete ON TABLE sesion TO test_admin;
+GRANT select ON TABLE sesion TO test_client;
 
 DROP TABLE IF EXISTS public.modulo;
 CREATE TABLE IF NOT EXISTS public.modulo (
@@ -287,9 +287,9 @@ WITH (
 OIDS=FALSE
 );
 ALTER TABLE IF EXISTS public.modulo
- OWNER TO pruebas1;
-GRANT insert, select, update, delete ON TABLE modulo TO pruebas_admin;
-GRANT select ON TABLE modulo TO pruebas_client;
+ OWNER TO test;
+GRANT insert, select, update, delete ON TABLE modulo TO test_admin;
+GRANT select ON TABLE modulo TO test_client;
 
 DROP TABLE IF EXISTS public.tipo_permiso;
 CREATE TABLE IF NOT EXISTS public.tipo_permiso (
@@ -301,9 +301,9 @@ WITH (
 OIDS=FALSE
 );
 ALTER TABLE IF EXISTS public.tipo_permiso
- OWNER TO pruebas1;
-GRANT insert, select, update, delete ON TABLE tipo_permiso TO pruebas_admin;
-GRANT select ON TABLE tipo_permiso TO pruebas_client;
+ OWNER TO test;
+GRANT insert, select, update, delete ON TABLE tipo_permiso TO test_admin;
+GRANT select ON TABLE tipo_permiso TO test_client;
 
 DROP TABLE IF EXISTS public.permisos;
 CREATE TABLE IF NOT EXISTS public.permisos (
@@ -329,9 +329,9 @@ WITH (
 OIDS=FALSE
 );
 ALTER TABLE IF EXISTS public.permisos
- OWNER TO pruebas1;
-GRANT insert, select, update, delete ON TABLE permisos TO pruebas_admin;
-GRANT select ON TABLE permisos TO pruebas_client;
+ OWNER TO test;
+GRANT insert, select, update, delete ON TABLE permisos TO test_admin;
+GRANT select ON TABLE permisos TO test_client;
 
 DROP TABLE IF EXISTS public.panelcontrol;
 CREATE TABLE IF NOT EXISTS public.panelcontrol (
@@ -349,9 +349,9 @@ WITH (
 OIDS=FALSE
 );
 ALTER TABLE IF EXISTS public.panelcontrol
- OWNER TO pruebas1;
-GRANT insert, select, update, delete ON TABLE panelcontrol TO pruebas_admin;
-GRANT select ON TABLE panelcontrol TO pruebas_client;
+ OWNER TO test;
+GRANT insert, select, update, delete ON TABLE panelcontrol TO test_admin;
+GRANT select ON TABLE panelcontrol TO test_client;
 
 DROP TABLE IF EXISTS public.panelcontrol_menu;
 CREATE TABLE IF NOT EXISTS public.panelcontrol_menu (
@@ -363,6 +363,6 @@ WITH (
 OIDS=FALSE
 );
 ALTER TABLE IF EXISTS public.panelcontrol_menu
- OWNER TO pruebas1;
-GRANT insert, select, update, delete ON TABLE panelcontrol_menu TO pruebas_admin;
-GRANT select ON TABLE panelcontrol_menu TO pruebas_client;
+ OWNER TO test;
+GRANT insert, select, update, delete ON TABLE panelcontrol_menu TO test_admin;
+GRANT select ON TABLE panelcontrol_menu TO test_client;

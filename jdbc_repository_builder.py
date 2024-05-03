@@ -9,13 +9,15 @@ Created on Thu May  2 09:04:49 2024
 import os
 import json
 
+from utils import Utils
 
 class JdbcRepositoryBuilder:
     
     def __init__(self, parameters):
         self.parameters = parameters
         
-        self.base_path = self.parameters["base_path"]
+        # self.base_path = self.parameters["base_path"]
+        self.source_directory = self.parameters["source_directory"]
         # self.package_name = self.parameters["package_name"]
         self.model_filename = self.parameters["model_filename"]
         
@@ -23,7 +25,6 @@ class JdbcRepositoryBuilder:
         self.package_name = self.data["package_name"] + "." + self.data["app_name"]
         
         self.template_directory = os.path.join(
-            self.parameters["base_path"],
             "templates"
             )
         
@@ -47,6 +48,8 @@ class JdbcRepositoryBuilder:
             # attribute_data_type = attribute["data_type"]   
             attribute_pk = attribute["pk"]  
             
+            print(attribute_name, attribute_pk)
+            
             # attribute_data_type = data_dict[attribute_data_type]
             
             if attribute_pk == False:
@@ -55,7 +58,8 @@ class JdbcRepositoryBuilder:
                 indentation = ", "
         sql  += ")\"\n"
         sql  += "\t\t+ \"VALUES ({})\";\n".format(values)   
-          
+        
+        
         return sql
 
 
@@ -126,22 +130,22 @@ class JdbcRepositoryBuilder:
         return jdbc_repository_filename
     
     
-    def create_folder(self, class_name, directory_name):
+    # def create_folder(self, class_name, directory_name):
         
-        folder_name = os.path.join(
-            self.base_path,
-            "src",
-            "main",
-            "java",
-            self.package_name,
-            class_name.lower(),
-            directory_name
-            )
+    #     folder_name = os.path.join(
+    #         self.base_path,
+    #         "src",
+    #         "main",
+    #         "java",
+    #         self.package_name,
+    #         class_name.lower(),
+    #         directory_name
+    #         )
     
-        if os.path.exists(folder_name) == False:
-            os.makedirs(folder_name)
+    #     if os.path.exists(folder_name) == False:
+    #         os.makedirs(folder_name)
         
-        return folder_name
+    #     return folder_name
     
     
     def get_template_filename(self, template_name):
@@ -160,15 +164,17 @@ class JdbcRepositoryBuilder:
         for attribute in attributes:
             attribute_name = attribute["name"]            
             attribute_name_upper = attribute_name[0].upper() + attribute_name[1:]
+            attribute_pk = attribute["pk"]  
             
-            get_text = indentation + "{}.get{}()"
-            
-            get_text = get_text.format(
-                object_name,
-                attribute_name_upper
-            )
-            getter_list += get_text
-            indentation = ", "
+            if attribute_pk == False:
+                get_text = indentation + "{}.get{}()"
+                
+                get_text = get_text.format(
+                    object_name,
+                    attribute_name_upper
+                )
+                getter_list += get_text
+                indentation = ", "
             
         return getter_list
 
@@ -195,39 +201,24 @@ class JdbcRepositoryBuilder:
             class_name_lower = class_name.lower()
             object_name = class_name_lower
             
-            directory_name = "repository"
-            folder_name = self.create_folder(
-                class_name,
-                directory_name
+            utils = Utils()
+            folder_name = utils.create_folder(
+                class_name, 
+                self.package_name, 
+                self.source_directory
                 )
-            
-            #     folder_name = os.path.join(
-            #         base_path,
-            #         "src",
-            #         package_name,
-            #         class_name_lower,
-            #         "repository"
-            #         )
-        
-            
-            # if os.path.exists(folder_name) == False:
-            #     os.makedirs(folder_name)
     
             template_filename = self.get_template_filename("JdbcRepository")
-            
-            # template_filename = os.path.join(
-            #     template_directory,
-            #     "JdbcRepository.java"
-            #     )
             f = open(template_filename, "r")
             content = f.read()
         
+            # $PACKAGE_NAME$
             content = content.replace("$PACKAGE_NAME$", self.package_name)
         
-            # class_name = class_name[0].upper() + class_name[1:]
+            # $CLASS_NAME$
             content = content.replace("$CLASS_NAME$", class_name_camelcase)
             
-            
+            # $OBJECT_NAME$
             content = content.replace("$OBJECT_NAME$", object_name)
     
         

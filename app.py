@@ -10,6 +10,7 @@ import os
 
 from database_builder import DataBaseBuilder
 
+from application_properties_builder import ApplicationPropertiesBuilder
 from application_builder import ApplicationBuilder
 from model_builder import ModelBuilder
 from repository_builder import RepositoryBuilder
@@ -18,25 +19,31 @@ from controller_builder import ControllerBuilder
 
     
 parameters = {}
-parameters["model_name"] = "pruebas1.json"
+
 parameters["db_execute"] = True
 parameters["base_directory"] = "/home/usco/Documents/test/pruebas"
-    # parameters["base_directory"],
-parameters["base_path"] = os.path.join(
-    "/home/usco/Documents/workspace-spring-tool-suite-4-4.20.0.RELEASE"
+    
+
+parameters["source_base_directory"] = "/media/usco/data1/dev/workspace-sts"
+parameters["source_directory"] = os.path.join(
+    parameters["source_base_directory"],
     "test"
     )
-# parameters["package_name"] = "org.usco.test"
+
+
+parameters["model_directory"] = "/home/usco/Documents/test/pruebas/pruebas2"
+parameters["model_name"] = "pruebas1.json"
+
 parameters["model_filename"] = os.path.join(
-    parameters["base_directory"],
-    "pruebas2",
+    parameters["model_directory"],
     parameters["model_name"]
     )
 
+database_builder = DataBaseBuilder(parameters)
+database_builder.build()
 
-
-# database_builder = DataBaseBuilder(parameters)
-# database_builder.build()
+application_properties_builder = ApplicationPropertiesBuilder(parameters)
+application_properties_builder.build()
 
 application_builder = ApplicationBuilder(parameters)
 application_builder.build()
@@ -52,6 +59,50 @@ jdbc_repository_builder.build()
 
 controller_builder = ControllerBuilder(parameters)
 controller_builder.build()
+
+
+
+
+# import subprocess
+
+# command = "cd"
+# subprocess.run([command, "/media/usco/data1/dev/workspace-sts/test"]) 
+
+# command = "mvn"
+# # pom_filename = "/media/usco/data1/dev/workspace-sts/test/pom.xml"
+# pom_filename = "pom.xml"
+# subprocess.run([command, "spring-boot:run", pom_filename]) 
+
+
+
+
+import os
+
+os.chdir("/media/usco/data1/dev/workspace-sts/test")
+# os.system("cd /media/usco/data1/dev/workspace-sts/test") 
+
+# os.system("mvn clean pom.xml")
+os.system("mvn spring-boot:run") 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -9,13 +9,16 @@ Created on Thu May  2 09:05:47 2024
 import os
 import json
 
+from utils import Utils
 
 class ModelBuilder:
     
     def __init__(self, parameters):
         self.parameters = parameters
         
-        self.base_path = self.parameters["base_path"]
+        # self.base_path = self.parameters["base_path"]
+        self.source_directory = self.parameters["source_directory"]
+        
         # self.package_name = self.parameters["package_name"]
         self.model_filename = self.parameters["model_filename"]
         
@@ -23,7 +26,7 @@ class ModelBuilder:
         self.package_name = self.data["package_name"] + "." + self.data["app_name"]
         
         self.template_directory = os.path.join(
-            self.parameters["base_path"],
+            # self.parameters["base_path"],
             "templates"
             )
         
@@ -205,22 +208,28 @@ class ModelBuilder:
         return to_string
 
 
-    def create_folder(self, class_name, directory_name):
+    # def create_folder(self, class_name):
         
-        folder_name = os.path.join(
-            self.base_path,
-            "src",
-            "main",
-            "java",
-            self.package_name,
-            class_name.lower(),
-            directory_name
-            )
-    
-        if os.path.exists(folder_name) == False:
-            os.makedirs(folder_name)
+    #     folders = self.package_name.split(".")
+    #     folders.append(class_name.lower())
         
-        return folder_name
+    #     folder_name = os.path.join(
+    #         self.source_directory,
+    #         "src",
+    #         "main",
+    #         "java"
+    #         )
+        
+    #     for folder in folders:
+    #         folder_name = os.path.join(
+    #             folder_name,
+    #             folder
+    #         )
+        
+    #         if os.path.exists(folder_name) == False:
+    #             os.makedirs(folder_name)
+        
+    #     return folder_name
     
     
     def get_template_filename(self, template_name):
@@ -252,8 +261,17 @@ class ModelBuilder:
             class_name_lower = class_name.lower()
             object_name = class_name_lower
             
-            directory_name = "model"
-            folder_name = self.create_folder(class_name, directory_name)
+            # # directory_name = "model"
+            # folder_name = self.create_folder(
+            #     class_name
+            #     )
+            
+            utils = Utils()
+            folder_name = utils.create_folder(
+                class_name, 
+                self.package_name, 
+                self.source_directory
+                )
             
             template_filename = self.get_template_filename("Model")
             # template_filename = os.path.join(
@@ -337,25 +355,7 @@ class ModelBuilder:
     
     
     
-    
-# parameters = {}
-# parameters["model_name"] = "pruebas1.json"
 
-# parameters["base_directory"] = "/home/usco/Documents/test/pruebas"
-# parameters["base_path"] = os.path.join(
-#     parameters["base_directory"],
-#     "pruebas"
-#     )
-# parameters["package_name"] = "org.usco.test"
-# parameters["model_filename"] = os.path.join(
-#     parameters["base_directory"],
-#     "pruebas2",
-#     parameters["model_name"]
-#     )
-
-
-# model_builder = ModelBuilder(parameters)
-# model_builder.build()
 
 
 
