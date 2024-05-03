@@ -1,0 +1,1385 @@
+{
+  "app_name": "test",
+  "package_name":"org.usco",
+  "db_engine": "postgresql",
+  "db_host": "localhost",
+  "db_port": 5432,
+  "engine_databasename": "postgres",
+  "dba_username": "postgres",
+  "dba_password": "ia2023",
+  "app_database_name": "test",
+  "app_database_owner": "test",
+  "app_database_password": "test",
+  "roles": [
+    { "username": "test", "password": "test" },
+    { "username": "test_admin", "password": "test_admin" },
+    { "username": "test_client", "password": "test_client" },
+    { "username": "test_guest", "password": "test_guest" }
+  ],
+  
+  "classes": [
+    {
+      "name": "estado",
+      "descripcion": "",
+      "attributes": [
+        {
+          "name": "id",
+          "data_type": "int",
+          "length": 0,
+          "pk": true,
+          "fk": false,
+          "unique": true,
+          "not_null": true,
+          "autoincrement": true,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encryted": false
+        },
+        {
+          "name": "nombre",
+          "data_type": "string",
+          "length": 100,
+          "pk": false,
+          "fk": false,
+          "unique": false,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encryted": false
+        },
+        {
+          "name": "descripcion",
+          "data_type": "string",
+          "length": 255,
+          "pk": false,
+          "fk": false,
+          "unique": false,
+          "not_null": false,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encryted": false
+        }
+      ],
+      "relations": [],
+        	"grants":[
+            	{"test_admin":["CREATE", "READ", "UPDATE", "DELETE"]},
+            	{"test_client":["READ"]}
+        	]
+    },
+    {
+      "name": "pais",
+      "descripcion": "Almacena los paises",
+      "attributes": [
+        {
+          "name": "id",
+          "data_type": "int",
+          "length": 0,
+          "pk": true,
+          "fk": false,
+          "unique": true,
+          "not_null": true,
+          "autoincrement": true,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encryted": false
+        },
+        {
+          "name": "nombre",
+          "data_type": "string",
+          "length": 25,
+          "pk": false,
+          "fk": false,
+          "unique": true,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encryted": false
+        },
+        {
+          "name": "codigo",
+          "data_type": "int",
+          "length": 3,
+          "pk": false,
+          "fk": false,
+          "unique": true,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encryted": false
+        },
+        {
+          "name": "acronimo",
+          "data_type": "string",
+          "length": 3,
+          "pk": false,
+          "fk": false,
+          "unique": true,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encryted": false
+        }
+      ],
+      "relations": [],
+        	"grants":[
+            	{"test_admin":["CREATE", "READ", "UPDATE", "DELETE"]},
+            	{"test_client":["READ"]}
+        	]
+    },
+    {
+      "name": "departamento",
+      "descripcion": "Almacena los departamentos",
+      "attributes": [
+        {
+          "name": "id",
+          "data_type": "int",
+          "length": 0,
+          "pk": true,
+          "fk": false,
+          "unique": true,
+          "not_null": true,
+          "autoincrement": true,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encryted": false
+        },
+        {
+          "name": "nombre",
+          "data_type": "string",
+          "length": 25,
+          "pk": false,
+          "fk": false,
+          "unique": true,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encryted": false
+        },
+        {
+          "name": "pais",
+          "data_type": "int",
+          "length": 0,
+          "pk": false,
+          "fk": true,
+          "unique": false,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "Foreign key de pais",
+          "encryted": false
+        },
+        {
+          "name": "codigo",
+          "data_type": "int",
+          "length": 2,
+          "pk": false,
+          "fk": false,
+          "unique": true,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encryted": false
+        },
+        {
+          "name": "acronimo",
+          "data_type": "string",
+          "length": 3,
+          "pk": false,
+          "fk": false,
+          "unique": false,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encryted": false
+        }
+      ],
+      "relations": [
+        {
+          "local_attribute": "pais",
+          "referenced_table": "pais",
+          "referenced_attribute": "id"
+        }
+      ],
+        	"grants":[
+            	{"test_admin":["CREATE", "READ", "UPDATE", "DELETE"]},
+            	{"test_client":["READ"]}
+        	]
+    },
+    {
+      "name": "municipio",
+      "descripcion": "Almacena los municipios",
+      "attributes": [
+        {
+          "name": "id",
+          "data_type": "int",
+          "length": 0,
+          "pk": true,
+          "fk": false,
+          "unique": true,
+          "not_null": true,
+          "autoincrement": true,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encryted": false
+        },
+        {
+          "name": "nombre",
+          "data_type": "string",
+          "length": 25,
+          "pk": false,
+          "fk": false,
+          "unique": false,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encryted": false
+        },
+        {
+          "name": "departamento",
+          "data_type": "int",
+          "length": 0,
+          "pk": false,
+          "fk": true,
+          "unique": false,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "Foreign key de Departamento",
+          "encryted": false
+        },
+        {
+          "name": "codigo",
+          "data_type": "string",
+          "length": 10,
+          "pk": false,
+          "fk": false,
+          "unique": true,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encryted": false
+        },
+        {
+          "name": "acronimo",
+          "data_type": "string",
+          "length": 3,
+          "pk": false,
+          "fk": false,
+          "unique": true,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encryted": false
+        }
+      ],
+      "relations": [
+        {
+          "local_attribute": "departamento",
+          "referenced_table": "departamento",
+          "referenced_attribute": "id"
+        }
+      ],
+        	"grants":[
+            	{"test_admin":["CREATE", "READ", "UPDATE", "DELETE"]},
+            	{"test_client":["READ"]}
+        	]
+    },
+    {
+      "name": "tipoentidad",
+      "descripcion": "Almacena los tipos de entidades",
+      "attributes": [
+        {
+          "name": "id",
+          "data_type": "int",
+          "length": 0,
+          "pk": true,
+          "fk": false,
+          "unique": true,
+          "not_null": true,
+          "autoincrement": true,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encryted": false
+        },
+        {
+          "name": "nombre",
+          "data_type": "string",
+          "length": 50,
+          "pk": false,
+          "fk": false,
+          "unique": true,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encryted": false
+        },
+        {
+          "name": "estado",
+          "data_type": "int",
+          "length": 0,
+          "pk": false,
+          "fk": true,
+          "unique": false,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "true",
+          "range": "",
+          "descripcion": "",
+          "encryted": false
+        }
+      ],
+      "relations": [
+        {
+          "local_attribute": "estado",
+          "referenced_table": "estado",
+          "referenced_attribute": "id"
+        }
+      ],
+        	"grants":[
+            	{"test_admin":["CREATE", "READ", "UPDATE", "DELETE"]},
+            	{"test_client":["READ"]}
+        	]
+    },
+    {
+      "name": "entidad",
+      "descripcion": "",
+      "attributes": [
+        {
+          "name": "id",
+          "data_type": "int",
+          "length": 0,
+          "pk": true,
+          "fk": false,
+          "unique": true,
+          "not_null": true,
+          "autoincrement": true,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encryted": false
+        },
+        {
+          "name": "nombre",
+          "data_type": "string",
+          "length": 50,
+          "pk": false,
+          "fk": false,
+          "unique": false,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encryted": false
+        },
+        {
+          "name": "municipio",
+          "data_type": "int",
+          "length": 0,
+          "pk": false,
+          "fk": true,
+          "unique": false,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "Foreign key de Municipio",
+          "encryted": false
+        },
+        {
+          "name": "codigo",
+          "data_type": "string",
+          "length": 10,
+          "pk": false,
+          "fk": false,
+          "unique": true,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "NIT",
+          "encryted": false
+        },
+        {
+          "name": "tipoentidad",
+          "data_type": "int",
+          "length": 0,
+          "pk": false,
+          "fk": true,
+          "unique": false,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "Foreign key de tipoentidad",
+          "encryted": false
+        },
+        {
+          "name": "estado",
+          "data_type": "int",
+          "length": 0,
+          "pk": false,
+          "fk": true,
+          "unique": false,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encryted": false
+        },
+        {
+          "name": "comuna",
+          "data_type": "string",
+          "length": 50,
+          "pk": false,
+          "fk": false,
+          "unique": false,
+          "not_null": false,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encryted": false
+        },
+        {
+          "name": "geolocalizacion",
+          "data_type": "string",
+          "length": 100,
+          "pk": false,
+          "fk": false,
+          "unique": false,
+          "not_null": false,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encryted": false
+        }
+      ],
+      "relations": [
+        {
+          "local_attribute": "municipio",
+          "referenced_table": "municipio",
+          "referenced_attribute": "id"
+        },
+        {
+          "local_attribute": "tipoentidad",
+          "referenced_table": "tipoentidad",
+          "referenced_attribute": "id"
+        },
+                {
+                  "local_attribute": "estado",
+                  "referenced_table": "estado",
+                  "referenced_attribute": "id"
+                }
+      ],
+        	"grants":[
+            	{"test_admin":["CREATE", "READ", "UPDATE", "DELETE"]},
+            	{"test_client":["READ"]}
+        	]
+    },
+    {
+      "name": "perfil",
+      "descripcion": "",
+      "attributes": [
+        {
+          "name": "id",
+          "data_type": "int",
+          "length": 0,
+          "pk": true,
+          "fk": false,
+          "unique": true,
+          "not_null": true,
+          "autoincrement": true,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encryted": false
+        },
+        {
+          "name": "nombre",
+          "data_type": "string",
+          "length": 100,
+          "pk": false,
+          "fk": false,
+          "unique": false,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encryted": false
+        },
+        {
+          "name": "descripcion",
+          "data_type": "string",
+          "length": 255,
+          "pk": false,
+          "fk": false,
+          "unique": false,
+          "not_null": false,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encryted": false
+        },
+        {
+          "name": "estado",
+          "data_type": "int",
+          "length": 0,
+          "pk": false,
+          "fk": true,
+          "unique": false,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "true",
+          "range": "",
+          "descripcion": "",
+          "encryted": false
+        },
+        {
+          "name": "codigo",
+          "data_type": "string",
+          "length": 20,
+          "pk": false,
+          "fk": false,
+          "unique": true,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "Rol",
+          "encryted": false
+        }
+      ],
+      "relations": [
+        {
+          "local_attribute": "estado",
+          "referenced_table": "estado",
+          "referenced_attribute": "id"
+        }
+      ],
+        	"grants":[
+            	{"test_admin":["CREATE", "READ", "UPDATE", "DELETE"]},
+            	{"test_client":["READ"]}
+        	]
+    },
+    {
+      "name": "tipo_identificacion",
+      "descripcion": "",
+      "attributes": [
+        {
+          "name": "id",
+          "data_type": "int",
+          "length": 0,
+          "pk": true,
+          "fk": false,
+          "unique": true,
+          "not_null": true,
+          "autoincrement": true,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encryted": false
+        },
+        {
+          "name": "nombre",
+          "data_type": "string",
+          "length": 100,
+          "pk": false,
+          "fk": false,
+          "unique": false,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encryted": false
+        }
+      ],
+      "relations": [],
+        	"grants":[
+            	{"test_admin":["CREATE", "READ", "UPDATE", "DELETE"]},
+            	{"test_client":["READ"]}
+        	]
+    },
+    {
+      "name": "persona",
+      "descripcion": "",
+      "attributes": [
+        {
+          "name": "id",
+          "data_type": "int",
+          "length": 0,
+          "pk": true,
+          "fk": false,
+          "unique": true,
+          "not_null": true,
+          "autoincrement": true,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encryted": false
+        },
+        {
+          "name": "nombre",
+          "data_type": "string",
+          "length": 50,
+          "pk": false,
+          "fk": false,
+          "unique": false,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encryted": false
+        },
+        {
+          "name": "apellido",
+          "data_type": "string",
+          "length": 50,
+          "pk": false,
+          "fk": false,
+          "unique": false,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encryted": false
+        },
+        {
+          "name": "tipo_identificacion",
+          "data_type": "int",
+          "length": 0,
+          "pk": false,
+          "fk": true,
+          "unique": false,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "Foreign key de tipo_identificacion",
+          "encryted": false
+        },
+        {
+          "name": "num_identificacion",
+          "data_type": "string",
+          "length": 20,
+          "pk": false,
+          "fk": false,
+          "unique": true,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encryted": true
+        },
+        {
+          "name": "genero",
+          "data_type": "boolean",
+          "length": 1,
+          "pk": false,
+          "fk": false,
+          "unique": false,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encryted": false
+        },
+        {
+          "name": "fecha_nacimiento",
+          "data_type": "date",
+          "length": 0,
+          "pk": false,
+          "fk": false,
+          "unique": false,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encryted": false
+        },
+        {
+          "name": "email",
+          "data_type": "string",
+          "length": 255,
+          "pk": false,
+          "fk": false,
+          "unique": true,
+          "not_null": false,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encryted": true
+        },
+        {
+          "name": "direccion",
+          "data_type": "string",
+          "length": 255,
+          "pk": false,
+          "fk": false,
+          "unique": false,
+          "not_null": false,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encryted": false
+        },
+        {
+          "name": "celular",
+          "data_type": "string",
+          "length": 10,
+          "pk": false,
+          "fk": false,
+          "unique": false,
+          "not_null": false,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encryted": false
+        },
+        {
+          "name": "estado",
+          "data_type": "int",
+          "length": 0,
+          "pk": false,
+          "fk": true,
+          "unique": false,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "true",
+          "range": "",
+          "descripcion": "",
+          "encryted": false
+        }
+      ],
+      "relations": [
+        {
+          "local_attribute": "tipo_identificacion",
+          "referenced_table": "tipo_identificacion",
+          "referenced_attribute": "id"
+        },
+        {
+          "local_attribute": "estado",
+          "referenced_table": "estado",
+          "referenced_attribute": "id"
+        }
+      ],
+        	"grants":[
+            	{"test_admin":["CREATE", "READ", "UPDATE", "DELETE"]},
+            	{"test_client":["READ"]}
+        	]
+    },
+    {
+      "name": "usuario",
+      "descripcion": "",
+      "attributes": [
+        {
+          "name": "id",
+          "data_type": "int",
+          "length": 0,
+          "pk": true,
+          "fk": false,
+          "unique": true,
+          "not_null": true,
+          "autoincrement": true,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encryted": false
+        },
+        {
+          "name": "login_username",
+          "data_type": "string",
+          "length": 50,
+          "pk": false,
+          "fk": false,
+          "unique": true,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encryted": false
+        },
+        {
+          "name": "persona",
+          "data_type": "int",
+          "length": 0,
+          "pk": false,
+          "fk": true,
+          "unique": false,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "Foreign key de persona",
+          "encryted": false
+        },
+        {
+          "name": "estado",
+          "data_type": "int",
+          "length": 0,
+          "pk": false,
+          "fk": true,
+          "unique": false,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "true",
+          "range": "",
+          "descripcion": "",
+          "encryted": false
+        }
+      ],
+      "relations": [
+        {
+          "local_attribute": "persona",
+          "referenced_table": "persona",
+          "referenced_attribute": "id"
+        },
+        {
+          "local_attribute": "estado",
+          "referenced_table": "estado",
+          "referenced_attribute": "id"
+        }
+      ],
+        	"grants":[
+            	{"test_admin":["CREATE", "READ", "UPDATE", "DELETE"]},
+            	{"test_client":["READ"]}
+        	]
+    },
+    {
+      "name": "usuario_perfil",
+      "descripcion": "",
+      "attributes": [
+        {
+          "name": "id",
+          "data_type": "int",
+          "length": 0,
+          "pk": true,
+          "fk": false,
+          "unique": true,
+          "not_null": true,
+          "autoincrement": true,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encryted": false
+        },
+        {
+          "name": "usuario",
+          "data_type": "int",
+          "length": 0,
+          "pk": false,
+          "fk": true,
+          "unique": false,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "Foreign key to usuario",
+          "encryted": false
+        },
+        {
+          "name": "perfil",
+          "data_type": "int",
+          "length": 0,
+          "pk": false,
+          "fk": true,
+          "unique": false,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "Foreign key to perfil",
+          "encryted": false
+        },
+        {
+          "name": "estado",
+          "data_type": "int",
+          "length": 0,
+          "pk": false,
+          "fk": true,
+          "unique": false,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "true",
+          "range": "",
+          "descripcion": "",
+          "encryted": false
+        }
+      ],
+      "relations": [
+        {
+          "local_attribute": "usuario",
+          "referenced_table": "usuario",
+          "referenced_attribute": "id"
+        },
+        {
+          "local_attribute": "perfil",
+          "referenced_table": "perfil",
+          "referenced_attribute": "id"
+        },
+        {
+          "local_attribute": "estado",
+          "referenced_table": "estado",
+          "referenced_attribute": "id"
+        }
+      ],
+        	"grants":[
+            	{"test_admin":["CREATE", "READ", "UPDATE", "DELETE"]},
+            	{"test_client":["READ"]}
+        	]
+    },
+    {
+      "name": "sesion",
+      "descripcion": "",
+      "attributes": [
+        {
+          "name": "id",
+          "data_type": "int",
+          "length": 0,
+          "pk": true,
+          "fk": false,
+          "unique": true,
+          "not_null": true,
+          "autoincrement": true,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encryted": false
+        },
+        {
+          "name": "usuario",
+          "data_type": "int",
+          "length": 0,
+          "pk": false,
+          "fk": true,
+          "unique": false,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "Foreign key de usuario",
+          "encryted": false
+        },
+        {
+          "name": "fecha_hora_start",
+          "data_type": "timestamp",
+          "length": 0,
+          "pk": false,
+          "fk": false,
+          "unique": false,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encryted": false
+        },
+        {
+          "name": "fecha_hora_end",
+          "data_type": "timestamp",
+          "length": 0,
+          "pk": false,
+          "fk": false,
+          "unique": false,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encryted": false
+        },
+        {
+          "name": "ip",
+          "data_type": "string",
+          "length": 100,
+          "pk": false,
+          "fk": false,
+          "unique": false,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "Host",
+          "encryted": false
+        }
+      ],
+      "relations": [
+        {
+          "local_attribute": "usuario",
+          "referenced_table": "usuario",
+          "referenced_attribute": "id"
+        }
+      ],
+        	"grants":[
+            	{"test_admin":["CREATE", "READ", "UPDATE", "DELETE"]},
+            	{"test_client":["READ"]}
+        	]
+    },
+    {
+      "name": "modulo",
+      "descripcion": "",
+      "attributes": [
+        {
+          "name": "id",
+          "data_type": "int",
+          "length": 0,
+          "pk": true,
+          "fk": false,
+          "unique": true,
+          "not_null": true,
+          "autoincrement": true,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encryted": false
+        },
+        {
+          "name": "nombre",
+          "data_type": "string",
+          "length": 50,
+          "pk": false,
+          "fk": false,
+          "unique": false,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encryted": false
+        },
+        {
+          "name": "descripcion",
+          "data_type": "string",
+          "length": 100,
+          "pk": false,
+          "fk": false,
+          "unique": false,
+          "not_null": false,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encryted": false
+        },
+        {
+          "name": "estado",
+          "data_type": "int",
+          "length": 0,
+          "pk": false,
+          "fk": true,
+          "unique": false,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "true",
+          "range": "",
+          "descripcion": "",
+          "encryted": false
+        },
+        {
+          "name": "url",
+          "data_type": "string",
+          "length": 255,
+          "pk": false,
+          "fk": false,
+          "unique": false,
+          "not_null": false,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "URL",
+          "encryted": false
+        }
+      ],
+      "relations": [
+        {
+          "local_attribute": "estado",
+          "referenced_table": "estado",
+          "referenced_attribute": "id"
+        }
+      ],
+        	"grants":[
+            	{"test_admin":["CREATE", "READ", "UPDATE", "DELETE"]},
+            	{"test_client":["READ"]}
+        	]
+    },
+    {
+      "name": "tipo_permiso",
+      "descripcion": "",
+      "attributes": [
+        {
+          "name": "id",
+          "data_type": "int",
+          "length": 0,
+          "pk": true,
+          "fk": false,
+          "unique": true,
+          "not_null": true,
+          "autoincrement": true,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encryted": false
+        },
+        {
+          "name": "nombre",
+          "data_type": "string",
+          "length": 10,
+          "pk": false,
+          "fk": false,
+          "unique": false,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "CRUD",
+          "encryted": false
+        }
+      ],
+      "relations": [],
+        	"grants":[
+            	{"test_admin":["CREATE", "READ", "UPDATE", "DELETE"]},
+            	{"test_client":["READ"]}
+        	]
+    },
+    {
+      "name": "permisos",
+      "descripcion": "",
+      "attributes": [
+        {
+          "name": "id",
+          "data_type": "int",
+          "length": 0,
+          "pk": true,
+          "fk": false,
+          "unique": true,
+          "not_null": true,
+          "autoincrement": true,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encryted": false
+        },
+        {
+          "name": "perfil",
+          "data_type": "int",
+          "length": 0,
+          "pk": false,
+          "fk": true,
+          "unique": false,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "Foreign key de perfil",
+          "encryted": false
+        },
+        {
+          "name": "modulo",
+          "data_type": "int",
+          "length": 0,
+          "pk": false,
+          "fk": true,
+          "unique": false,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "Foreign key de modulo",
+          "encryted": false
+        },
+        {
+          "name": "tipo_permiso",
+          "data_type": "int",
+          "length": 0,
+          "pk": false,
+          "fk": true,
+          "unique": false,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "Foreign key de tipo_permiso",
+          "encryted": false
+        }
+      ],
+      "relations": [
+        {
+          "local_attribute": "perfil",
+          "referenced_table": "perfil",
+          "referenced_attribute": "id"
+        },
+        {
+          "local_attribute": "modulo",
+          "referenced_table": "modulo",
+          "referenced_attribute": "id"
+        },
+        {
+          "local_attribute": "tipo_permiso",
+          "referenced_table": "tipo_permiso",
+          "referenced_attribute": "id"
+        }
+      ],
+        	"grants":[
+            	{"test_admin":["CREATE", "READ", "UPDATE", "DELETE"]},
+            	{"test_client":["READ"]}
+        	]
+    },
+    {
+      "name": "panelcontrol",
+      "descripcion": "",
+      "attributes": [
+        {
+          "name": "id",
+          "data_type": "int",
+          "length": 0,
+          "pk": true,
+          "fk": false,
+          "unique": true,
+          "not_null": true,
+          "autoincrement": true,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encryted": false
+        },
+        {
+          "name": "nombre",
+          "data_type": "string",
+          "length": 100,
+          "pk": false,
+          "fk": false,
+          "unique": false,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encryted": false
+        },
+        {
+          "name": "descripcion",
+          "data_type": "string",
+          "length": 255,
+          "pk": false,
+          "fk": false,
+          "unique": false,
+          "not_null": false,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encryted": false
+        },
+        {
+          "name": "estado",
+          "data_type": "int",
+          "length": 0,
+          "pk": false,
+          "fk": true,
+          "unique": false,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "true",
+          "range": "",
+          "descripcion": "",
+          "encryted": false
+        }
+      ],
+      "relations": [
+        {
+          "local_attribute": "estado",
+          "referenced_table": "estado",
+          "referenced_attribute": "id"
+        }
+      ],
+        	"grants":[
+            	{"test_admin":["CREATE", "READ", "UPDATE", "DELETE"]},
+            	{"test_client":["READ"]}
+        	]
+    },
+    {
+      "name": "panelcontrol_menu",
+      "descripcion": "",
+      "attributes": [
+        {
+          "name": "id",
+          "data_type": "int",
+          "length": 0,
+          "pk": true,
+          "fk": false,
+          "unique": true,
+          "not_null": true,
+          "autoincrement": true,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encryted": false
+        },
+        {
+          "name": "nombre",
+          "data_type": "string",
+          "length": 100,
+          "pk": false,
+          "fk": false,
+          "unique": false,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encryted": false
+        }
+      ],
+      "relations": [],
+        	"grants":[
+            	{"test_admin":["CREATE", "READ", "UPDATE", "DELETE"]},
+            	{"test_client":["READ"]}
+        	]
+    }
+  ]
+}
