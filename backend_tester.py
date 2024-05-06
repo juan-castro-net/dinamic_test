@@ -399,14 +399,14 @@ class BackendTester:
        
 parameters = {}
 
-parameters["source_base_directory"] = "/media/usco/data1/dev/workspace-sts"
+parameters["source_base_directory"] = "/home/server2/Documents/dinamic_test"
 parameters["source_directory"] = os.path.join(
     parameters["source_base_directory"],
     "test"
     )
 
 
-parameters["model_directory"] = "/home/usco/Documents/test/pruebas/pruebas2"
+parameters["model_directory"] = "/home/server2/Documents/dinamic_test"
 parameters["model_name"] = "pruebas1.json"
 
 parameters["model_filename"] = os.path.join(

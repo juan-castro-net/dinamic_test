@@ -6,7 +6,7 @@
   "db_port": 5432,
   "engine_databasename": "postgres",
   "dba_username": "postgres",
-  "dba_password": "ia2023",
+  "dba_password": "software23",
   "app_database_name": "test",
   "app_database_owner": "test",
   "app_database_password": "test",
