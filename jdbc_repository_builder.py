@@ -33,6 +33,7 @@ class JdbcRepositoryBuilder:
             "string":"String",
             "date":"Date",
             "timestamp":"TimeStamp",
+            "double precision":"double",
             "boolean":"boolean"
             }
     

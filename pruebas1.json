@@ -1,22 +1,29 @@
 {
-  "app_name": "test",
-  "package_name":"org.usco",
+  "app_name": "agro",
+  "package_name": "org.usco",
   "db_engine": "postgresql",
   "db_host": "localhost",
   "db_port": 5432,
   "engine_databasename": "postgres",
   "dba_username": "postgres",
+<<<<<<< HEAD
   "dba_password": "software23",
   "app_database_name": "test",
   "app_database_owner": "test",
   "app_database_password": "test",
+=======
+  "dba_password": "ia2023",
+  "app_database_name": "agro",
+  "app_database_owner": "agro",
+  "app_database_password": "agro",
+>>>>>>> 9f28555 (v1)
   "roles": [
-    { "username": "test", "password": "test" },
-    { "username": "test_admin", "password": "test_admin" },
-    { "username": "test_client", "password": "test_client" },
-    { "username": "test_guest", "password": "test_guest" }
+    { "username": "agro", "password": "agro" },
+    { "username": "agro_admin", "password": "agro_admin" },
+    { "username": "agro_client", "password": "agro_client" },
+    { "username": "agro_guest", "password": "agro_guest" }
   ],
-  
+
   "classes": [
     {
       "name": "estado",
@@ -66,9 +73,15 @@
         }
       ],
       "relations": [],
+<<<<<<< HEAD
       "grants":[
           {"test_admin":["CREATE", "READ", "UPDATE", "DELETE"]},
           {"test_client":["READ"]}
+=======
+      "grants": [
+        { "agro_admin": ["CREATE", "READ", "UPDATE", "DELETE"] },
+        { "agro_client": ["READ"] }
+>>>>>>> 9f28555 (v1)
       ]
     },
     {
@@ -133,11 +146,12 @@
         }
       ],
       "relations": [],
-        	"grants":[
-            	{"test_admin":["CREATE", "READ", "UPDATE", "DELETE"]},
-            	{"test_client":["READ"]}
-        	]
+      "grants": [
+        { "agro_admin": ["CREATE", "READ", "UPDATE", "DELETE"] },
+        { "agro_client": ["READ"] }
+      ]
     },
+
     {
       "name": "departamento",
       "descripcion": "Almacena los departamentos",
@@ -171,7 +185,7 @@
           "encryted": false
         },
         {
-          "name": "pais",
+          "name": "pais_id",
           "data_type": "int",
           "length": 0,
           "pk": false,
@@ -181,7 +195,7 @@
           "autoincrement": false,
           "default": "",
           "range": "",
-          "descripcion": "Foreign key de pais",
+          "descripcion": "Referencia a la tabla pais",
           "encryted": false
         },
         {
@@ -215,15 +229,15 @@
       ],
       "relations": [
         {
-          "local_attribute": "pais",
+          "local_attribute": "pais_id",
           "referenced_table": "pais",
           "referenced_attribute": "id"
         }
       ],
-        	"grants":[
-            	{"test_admin":["CREATE", "READ", "UPDATE", "DELETE"]},
-            	{"test_client":["READ"]}
-        	]
+      "grants": [
+        { "agro_admin": ["CREATE", "READ", "UPDATE", "DELETE"] },
+        { "agro_client": ["READ"] }
+      ]
     },
     {
       "name": "municipio",
@@ -258,7 +272,7 @@
           "encryted": false
         },
         {
-          "name": "departamento",
+          "name": "departamento_id",
           "data_type": "int",
           "length": 0,
           "pk": false,
@@ -268,13 +282,13 @@
           "autoincrement": false,
           "default": "",
           "range": "",
-          "descripcion": "Foreign key de Departamento",
+          "descripcion": "Referencia a la tabla departamento",
           "encryted": false
         },
         {
           "name": "codigo",
-          "data_type": "string",
-          "length": 10,
+          "data_type": "int",
+          "length": 3,
           "pk": false,
           "fk": false,
           "unique": true,
@@ -302,301 +316,17 @@
       ],
       "relations": [
         {
-          "local_attribute": "departamento",
+          "local_attribute": "departamento_id",
           "referenced_table": "departamento",
           "referenced_attribute": "id"
         }
       ],
-        	"grants":[
-            	{"test_admin":["CREATE", "READ", "UPDATE", "DELETE"]},
-            	{"test_client":["READ"]}
-        	]
+      "grants": [
+        { "agro_admin": ["CREATE", "READ", "UPDATE", "DELETE"] },
+        { "agro_client": ["READ"] }
+      ]
     },
-    {
-      "name": "tipoentidad",
-      "descripcion": "Almacena los tipos de entidades",
-      "attributes": [
-        {
-          "name": "id",
-          "data_type": "int",
-          "length": 0,
-          "pk": true,
-          "fk": false,
-          "unique": true,
-          "not_null": true,
-          "autoincrement": true,
-          "default": "",
-          "range": "",
-          "descripcion": "",
-          "encryted": false
-        },
-        {
-          "name": "nombre",
-          "data_type": "string",
-          "length": 50,
-          "pk": false,
-          "fk": false,
-          "unique": true,
-          "not_null": true,
-          "autoincrement": false,
-          "default": "",
-          "range": "",
-          "descripcion": "",
-          "encryted": false
-        },
-        {
-          "name": "estado",
-          "data_type": "int",
-          "length": 0,
-          "pk": false,
-          "fk": true,
-          "unique": false,
-          "not_null": true,
-          "autoincrement": false,
-          "default": "true",
-          "range": "",
-          "descripcion": "",
-          "encryted": false
-        }
-      ],
-      "relations": [
-        {
-          "local_attribute": "estado",
-          "referenced_table": "estado",
-          "referenced_attribute": "id"
-        }
-      ],
-        	"grants":[
-            	{"test_admin":["CREATE", "READ", "UPDATE", "DELETE"]},
-            	{"test_client":["READ"]}
-        	]
-    },
-    {
-      "name": "entidad",
-      "descripcion": "",
-      "attributes": [
-        {
-          "name": "id",
-          "data_type": "int",
-          "length": 0,
-          "pk": true,
-          "fk": false,
-          "unique": true,
-          "not_null": true,
-          "autoincrement": true,
-          "default": "",
-          "range": "",
-          "descripcion": "",
-          "encryted": false
-        },
-        {
-          "name": "nombre",
-          "data_type": "string",
-          "length": 50,
-          "pk": false,
-          "fk": false,
-          "unique": false,
-          "not_null": true,
-          "autoincrement": false,
-          "default": "",
-          "range": "",
-          "descripcion": "",
-          "encryted": false
-        },
-        {
-          "name": "municipio",
-          "data_type": "int",
-          "length": 0,
-          "pk": false,
-          "fk": true,
-          "unique": false,
-          "not_null": true,
-          "autoincrement": false,
-          "default": "",
-          "range": "",
-          "descripcion": "Foreign key de Municipio",
-          "encryted": false
-        },
-        {
-          "name": "codigo",
-          "data_type": "string",
-          "length": 10,
-          "pk": false,
-          "fk": false,
-          "unique": true,
-          "not_null": true,
-          "autoincrement": false,
-          "default": "",
-          "range": "",
-          "descripcion": "NIT",
-          "encryted": false
-        },
-        {
-          "name": "tipoentidad",
-          "data_type": "int",
-          "length": 0,
-          "pk": false,
-          "fk": true,
-          "unique": false,
-          "not_null": true,
-          "autoincrement": false,
-          "default": "",
-          "range": "",
-          "descripcion": "Foreign key de tipoentidad",
-          "encryted": false
-        },
-        {
-          "name": "estado",
-          "data_type": "int",
-          "length": 0,
-          "pk": false,
-          "fk": true,
-          "unique": false,
-          "not_null": true,
-          "autoincrement": false,
-          "default": "",
-          "range": "",
-          "descripcion": "",
-          "encryted": false
-        },
-        {
-          "name": "comuna",
-          "data_type": "string",
-          "length": 50,
-          "pk": false,
-          "fk": false,
-          "unique": false,
-          "not_null": false,
-          "autoincrement": false,
-          "default": "",
-          "range": "",
-          "descripcion": "",
-          "encryted": false
-        },
-        {
-          "name": "geolocalizacion",
-          "data_type": "string",
-          "length": 100,
-          "pk": false,
-          "fk": false,
-          "unique": false,
-          "not_null": false,
-          "autoincrement": false,
-          "default": "",
-          "range": "",
-          "descripcion": "",
-          "encryted": false
-        }
-      ],
-      "relations": [
-        {
-          "local_attribute": "municipio",
-          "referenced_table": "municipio",
-          "referenced_attribute": "id"
-        },
-        {
-          "local_attribute": "tipoentidad",
-          "referenced_table": "tipoentidad",
-          "referenced_attribute": "id"
-        },
-                {
-                  "local_attribute": "estado",
-                  "referenced_table": "estado",
-                  "referenced_attribute": "id"
-                }
-      ],
-        	"grants":[
-            	{"test_admin":["CREATE", "READ", "UPDATE", "DELETE"]},
-            	{"test_client":["READ"]}
-        	]
-    },
-    {
-      "name": "perfil",
-      "descripcion": "",
-      "attributes": [
-        {
-          "name": "id",
-          "data_type": "int",
-          "length": 0,
-          "pk": true,
-          "fk": false,
-          "unique": true,
-          "not_null": true,
-          "autoincrement": true,
-          "default": "",
-          "range": "",
-          "descripcion": "",
-          "encryted": false
-        },
-        {
-          "name": "nombre",
-          "data_type": "string",
-          "length": 100,
-          "pk": false,
-          "fk": false,
-          "unique": false,
-          "not_null": true,
-          "autoincrement": false,
-          "default": "",
-          "range": "",
-          "descripcion": "",
-          "encryted": false
-        },
-        {
-          "name": "descripcion",
-          "data_type": "string",
-          "length": 255,
-          "pk": false,
-          "fk": false,
-          "unique": false,
-          "not_null": false,
-          "autoincrement": false,
-          "default": "",
-          "range": "",
-          "descripcion": "",
-          "encryted": false
-        },
-        {
-          "name": "estado",
-          "data_type": "int",
-          "length": 0,
-          "pk": false,
-          "fk": true,
-          "unique": false,
-          "not_null": true,
-          "autoincrement": false,
-          "default": "true",
-          "range": "",
-          "descripcion": "",
-          "encryted": false
-        },
-        {
-          "name": "codigo",
-          "data_type": "string",
-          "length": 20,
-          "pk": false,
-          "fk": false,
-          "unique": true,
-          "not_null": true,
-          "autoincrement": false,
-          "default": "",
-          "range": "",
-          "descripcion": "Rol",
-          "encryted": false
-        }
-      ],
-      "relations": [
-        {
-          "local_attribute": "estado",
-          "referenced_table": "estado",
-          "referenced_attribute": "id"
-        }
-      ],
-        	"grants":[
-            	{"test_admin":["CREATE", "READ", "UPDATE", "DELETE"]},
-            	{"test_client":["READ"]}
-        	]
-    },
+
     {
       "name": "tipo_identificacion",
       "descripcion": "",
@@ -628,13 +358,51 @@
           "range": "",
           "descripcion": "",
           "encryted": false
+        },
+        {
+          "name": "descripcion",
+          "data_type": "string",
+          "length": 255,
+          "pk": false,
+          "fk": false,
+          "unique": false,
+          "not_null": false,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encryted": false
+        },
+        {
+          "name": "estado_id",
+          "data_type": "int",
+          "length": 0,
+          "pk": false,
+          "fk": true,
+          "unique": false,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "Referencia a la tabla estado",
+          "encryted": false
         }
       ],
-      "relations": [],
-        	"grants":[
-            	{"test_admin":["CREATE", "READ", "UPDATE", "DELETE"]},
-            	{"test_client":["READ"]}
-        	]
+      "relations": [
+        {
+          "local_attribute": "estado_id",
+          "referenced_table": "estado",
+          "referenced_attribute": "id"
+        }
+      ],
+      "grants": [
+        {
+          "agro_admin": ["CREATE", "READ", "UPDATE", "DELETE"]
+        },
+        {
+          "agro_client": ["READ"]
+        }
+      ]
     },
     {
       "name": "persona",
@@ -652,35 +420,7 @@
           "default": "",
           "range": "",
           "descripcion": "",
-          "encryted": false
-        },
-        {
-          "name": "nombre",
-          "data_type": "string",
-          "length": 50,
-          "pk": false,
-          "fk": false,
-          "unique": false,
-          "not_null": true,
-          "autoincrement": false,
-          "default": "",
-          "range": "",
-          "descripcion": "",
-          "encryted": false
-        },
-        {
-          "name": "apellido",
-          "data_type": "string",
-          "length": 50,
-          "pk": false,
-          "fk": false,
-          "unique": false,
-          "not_null": true,
-          "autoincrement": false,
-          "default": "",
-          "range": "",
-          "descripcion": "",
-          "encryted": false
+          "encrypted": false
         },
         {
           "name": "tipo_identificacion",
@@ -693,22 +433,50 @@
           "autoincrement": false,
           "default": "",
           "range": "",
-          "descripcion": "Foreign key de tipo_identificacion",
-          "encryted": false
+          "descripcion": "Referencia a la tabla tipo_identificacion",
+          "encrypted": false
         },
         {
-          "name": "num_identificacion",
+          "name": "identificacion",
           "data_type": "string",
           "length": 20,
           "pk": false,
           "fk": false,
-          "unique": true,
+          "unique": false,
           "not_null": true,
           "autoincrement": false,
           "default": "",
           "range": "",
           "descripcion": "",
-          "encryted": true
+          "encrypted": false
+        },
+        {
+          "name": "nombre",
+          "data_type": "string",
+          "length": 100,
+          "pk": false,
+          "fk": false,
+          "unique": false,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encrypted": false
+        },
+        {
+          "name": "apellido",
+          "data_type": "string",
+          "length": 100,
+          "pk": false,
+          "fk": false,
+          "unique": false,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encrypted": false
         },
         {
           "name": "genero",
@@ -717,12 +485,12 @@
           "pk": false,
           "fk": false,
           "unique": false,
-          "not_null": true,
+          "not_null": false,
           "autoincrement": false,
           "default": "",
           "range": "",
           "descripcion": "",
-          "encryted": false
+          "encrypted": false
         },
         {
           "name": "fecha_nacimiento",
@@ -731,26 +499,26 @@
           "pk": false,
           "fk": false,
           "unique": false,
-          "not_null": true,
-          "autoincrement": false,
-          "default": "",
-          "range": "",
-          "descripcion": "",
-          "encryted": false
-        },
-        {
-          "name": "email",
-          "data_type": "string",
-          "length": 255,
-          "pk": false,
-          "fk": false,
-          "unique": true,
           "not_null": false,
           "autoincrement": false,
           "default": "",
           "range": "",
           "descripcion": "",
-          "encryted": true
+          "encrypted": false
+        },
+        {
+          "name": "estrato",
+          "data_type": "int",
+          "length": 0,
+          "pk": false,
+          "fk": false,
+          "unique": false,
+          "not_null": false,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encrypted": false
         },
         {
           "name": "direccion",
@@ -764,11 +532,25 @@
           "default": "",
           "range": "",
           "descripcion": "",
-          "encryted": false
+          "encrypted": false
+        },
+        {
+          "name": "email_personal",
+          "data_type": "string",
+          "length": 100,
+          "pk": false,
+          "fk": false,
+          "unique": false,
+          "not_null": false,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encrypted": false
         },
         {
           "name": "celular",
-          "data_type": "string",
+          "data_type": "int",
           "length": 10,
           "pk": false,
           "fk": false,
@@ -778,7 +560,7 @@
           "default": "",
           "range": "",
           "descripcion": "",
-          "encryted": false
+          "encrypted": false
         },
         {
           "name": "estado",
@@ -789,10 +571,10 @@
           "unique": false,
           "not_null": true,
           "autoincrement": false,
-          "default": "true",
+          "default": "",
           "range": "",
-          "descripcion": "",
-          "encryted": false
+          "descripcion": "Referencia a la tabla estado",
+          "encrypted": false
         }
       ],
       "relations": [
@@ -807,10 +589,14 @@
           "referenced_attribute": "id"
         }
       ],
-        	"grants":[
-            	{"test_admin":["CREATE", "READ", "UPDATE", "DELETE"]},
-            	{"test_client":["READ"]}
-        	]
+      "grants": [
+        {
+          "agro_admin": ["CREATE", "READ", "UPDATE", "DELETE"]
+        },
+        {
+          "agro_client": ["READ"]
+        }
+      ]
     },
     {
       "name": "usuario",
@@ -828,24 +614,10 @@
           "default": "",
           "range": "",
           "descripcion": "",
-          "encryted": false
+          "encrypted": false
         },
         {
-          "name": "login_username",
-          "data_type": "string",
-          "length": 50,
-          "pk": false,
-          "fk": false,
-          "unique": true,
-          "not_null": true,
-          "autoincrement": false,
-          "default": "",
-          "range": "",
-          "descripcion": "",
-          "encryted": false
-        },
-        {
-          "name": "persona",
+          "name": "persona_id",
           "data_type": "int",
           "length": 0,
           "pk": false,
@@ -855,8 +627,36 @@
           "autoincrement": false,
           "default": "",
           "range": "",
-          "descripcion": "Foreign key de persona",
-          "encryted": false
+          "descripcion": "Referencia a la tabla persona",
+          "encrypted": false
+        },
+        {
+          "name": "email",
+          "data_type": "string",
+          "length": 100,
+          "pk": false,
+          "fk": false,
+          "unique": true,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encrypted": false
+        },
+        {
+          "name": "password",
+          "data_type": "string",
+          "length": 255,
+          "pk": false,
+          "fk": false,
+          "unique": false,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encrypted": true
         },
         {
           "name": "estado",
@@ -867,15 +667,15 @@
           "unique": false,
           "not_null": true,
           "autoincrement": false,
-          "default": "true",
+          "default": "",
           "range": "",
-          "descripcion": "",
-          "encryted": false
+          "descripcion": "Referencia a la tabla estado",
+          "encrypted": false
         }
       ],
       "relations": [
         {
-          "local_attribute": "persona",
+          "local_attribute": "persona_id",
           "referenced_table": "persona",
           "referenced_attribute": "id"
         },
@@ -885,11 +685,93 @@
           "referenced_attribute": "id"
         }
       ],
-        	"grants":[
-            	{"test_admin":["CREATE", "READ", "UPDATE", "DELETE"]},
-            	{"test_client":["READ"]}
-        	]
+      "grants": [
+        {
+          "agro_admin": ["CREATE", "READ", "UPDATE", "DELETE"]
+        },
+        {
+          "agro_client": ["READ"]
+        }
+      ]
     },
+    {
+      "name": "perfil",
+      "descripcion": "",
+      "attributes": [
+        {
+          "name": "id",
+          "data_type": "int",
+          "length": 0,
+          "pk": true,
+          "fk": false,
+          "unique": true,
+          "not_null": true,
+          "autoincrement": true,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encrypted": false
+        },
+        {
+          "name": "nombre",
+          "data_type": "string",
+          "length": 100,
+          "pk": false,
+          "fk": false,
+          "unique": false,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encrypted": false
+        },
+        {
+          "name": "descripcion",
+          "data_type": "string",
+          "length": 255,
+          "pk": false,
+          "fk": false,
+          "unique": false,
+          "not_null": false,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encrypted": false
+        },
+        {
+          "name": "estado",
+          "data_type": "int",
+          "length": 0,
+          "pk": false,
+          "fk": false,
+          "unique": false,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "Referencia a la tabla estado",
+          "encrypted": false
+        }
+      ],
+      "relations": [
+        {
+          "local_attribute": "estado",
+          "referenced_table": "estado",
+          "referenced_attribute": "id"
+        }
+      ],
+      "grants": [
+        {
+          "agro_admin": ["CREATE", "READ", "UPDATE", "DELETE"]
+        },
+        {
+          "agro_client": ["READ"]
+        }
+      ]
+    },
+
     {
       "name": "usuario_perfil",
       "descripcion": "",
@@ -906,10 +788,10 @@
           "default": "",
           "range": "",
           "descripcion": "",
-          "encryted": false
+          "encrypted": false
         },
         {
-          "name": "usuario",
+          "name": "usuario_id",
           "data_type": "int",
           "length": 0,
           "pk": false,
@@ -919,11 +801,11 @@
           "autoincrement": false,
           "default": "",
           "range": "",
-          "descripcion": "Foreign key to usuario",
-          "encryted": false
+          "descripcion": "Referencia a la tabla usuario",
+          "encrypted": false
         },
         {
-          "name": "perfil",
+          "name": "perfil_id",
           "data_type": "int",
           "length": 0,
           "pk": false,
@@ -933,34 +815,34 @@
           "autoincrement": false,
           "default": "",
           "range": "",
-          "descripcion": "Foreign key to perfil",
-          "encryted": false
+          "descripcion": "Referencia a la tabla perfil",
+          "encrypted": false
         },
         {
           "name": "estado",
           "data_type": "int",
           "length": 0,
           "pk": false,
-          "fk": true,
+          "fk": false,
           "unique": false,
           "not_null": true,
           "autoincrement": false,
-          "default": "true",
+          "default": "",
           "range": "",
-          "descripcion": "",
-          "encryted": false
+          "descripcion": "Referencia a la tabla estado",
+          "encrypted": false
         }
       ],
       "relations": [
         {
-          "local_attribute": "usuario",
+          "local_attribute": "usuario_id",
           "referenced_table": "usuario",
           "referenced_attribute": "id"
         },
         {
-          "local_attribute": "perfil",
+          "local_attribute": "perfil_id",
           "referenced_table": "perfil",
-          "referenced_attribute": "id"
+          "referenced_attribute": "Id"
         },
         {
           "local_attribute": "estado",
@@ -968,85 +850,14 @@
           "referenced_attribute": "id"
         }
       ],
-        	"grants":[
-            	{"test_admin":["CREATE", "READ", "UPDATE", "DELETE"]},
-            	{"test_client":["READ"]}
-        	]
-    },
-    {
-      "name": "sesion",
-      "descripcion": "",
-      "attributes": [
+      "grants": [
         {
-          "name": "id",
-          "data_type": "int",
-          "length": 0,
-          "pk": true,
-          "fk": false,
-          "unique": true,
-          "not_null": true,
-          "autoincrement": true,
-          "default": "",
-          "range": "",
-          "descripcion": "",
-          "encryted": false
+          "agro_admin": ["CREATE", "READ", "UPDATE", "DELETE"]
         },
         {
-          "name": "usuario",
-          "data_type": "int",
-          "length": 0,
-          "pk": false,
-          "fk": true,
-          "unique": false,
-          "not_null": true,
-          "autoincrement": false,
-          "default": "",
-          "range": "",
-          "descripcion": "Foreign key de usuario",
-          "encryted": false
-        },
-        {
-          "name": "fecha_hora_start",
-          "data_type": "timestamp",
-          "length": 0,
-          "pk": false,
-          "fk": false,
-          "unique": false,
-          "not_null": true,
-          "autoincrement": false,
-          "default": "",
-          "range": "",
-          "descripcion": "",
-          "encryted": false
-        },
-        {
-          "name": "fecha_hora_end",
-          "data_type": "timestamp",
-          "length": 0,
-          "pk": false,
-          "fk": false,
-          "unique": false,
-          "not_null": true,
-          "autoincrement": false,
-          "default": "",
-          "range": "",
-          "descripcion": "",
-          "encryted": false
-        },
-        {
-          "name": "ip",
-          "data_type": "string",
-          "length": 100,
-          "pk": false,
-          "fk": false,
-          "unique": false,
-          "not_null": true,
-          "autoincrement": false,
-          "default": "",
-          "range": "",
-          "descripcion": "Host",
-          "encryted": false
+          "agro_client": ["READ"]
         }
+<<<<<<< HEAD
       ],
       "relations": [
         {
@@ -1059,7 +870,11 @@
            	{"test_admin":["CREATE", "READ", "UPDATE", "DELETE"]},
            	{"test_client":["READ"]}
        	]
+=======
+      ]
+>>>>>>> 9f28555 (v1)
     },
+
     {
       "name": "modulo",
       "descripcion": "",
@@ -1076,49 +891,21 @@
           "default": "",
           "range": "",
           "descripcion": "",
-          "encryted": false
+          "encrypted": false
         },
         {
           "name": "nombre",
-          "data_type": "string",
-          "length": 50,
-          "pk": false,
-          "fk": false,
-          "unique": false,
-          "not_null": true,
-          "autoincrement": false,
-          "default": "",
-          "range": "",
-          "descripcion": "",
-          "encryted": false
-        },
-        {
-          "name": "descripcion",
           "data_type": "string",
           "length": 100,
           "pk": false,
           "fk": false,
           "unique": false,
-          "not_null": false,
+          "not_null": true,
           "autoincrement": false,
           "default": "",
           "range": "",
           "descripcion": "",
-          "encryted": false
-        },
-        {
-          "name": "estado",
-          "data_type": "int",
-          "length": 0,
-          "pk": false,
-          "fk": true,
-          "unique": false,
-          "not_null": true,
-          "autoincrement": false,
-          "default": "true",
-          "range": "",
-          "descripcion": "",
-          "encryted": false
+          "encrypted": false
         },
         {
           "name": "url",
@@ -1131,8 +918,36 @@
           "autoincrement": false,
           "default": "",
           "range": "",
-          "descripcion": "URL",
-          "encryted": false
+          "descripcion": "",
+          "encrypted": false
+        },
+        {
+          "name": "descripcion",
+          "data_type": "string",
+          "length": 255,
+          "pk": false,
+          "fk": false,
+          "unique": false,
+          "not_null": false,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encrypted": false
+        },
+        {
+          "name": "estado",
+          "data_type": "int",
+          "length": 0,
+          "pk": false,
+          "fk": false,
+          "unique": false,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "Referencia a la tabla estado",
+          "encrypted": false
         }
       ],
       "relations": [
@@ -1142,13 +957,18 @@
           "referenced_attribute": "id"
         }
       ],
-        	"grants":[
-            	{"test_admin":["CREATE", "READ", "UPDATE", "DELETE"]},
-            	{"test_client":["READ"]}
-        	]
+      "grants": [
+        {
+          "agro_admin": ["CREATE", "READ", "UPDATE", "DELETE"]
+        },
+        {
+          "agro_client": ["READ"]
+        }
+      ]
     },
+
     {
-      "name": "tipo_permiso",
+      "name": "metodo",
       "descripcion": "",
       "attributes": [
         {
@@ -1163,12 +983,12 @@
           "default": "",
           "range": "",
           "descripcion": "",
-          "encryted": false
+          "encrypted": false
         },
         {
           "name": "nombre",
           "data_type": "string",
-          "length": 10,
+          "length": 100,
           "pk": false,
           "fk": false,
           "unique": false,
@@ -1176,15 +996,155 @@
           "autoincrement": false,
           "default": "",
           "range": "",
-          "descripcion": "CRUD",
-          "encryted": false
+          "descripcion": "",
+          "encrypted": false
+        },
+        {
+          "name": "descripcion",
+          "data_type": "string",
+          "length": 255,
+          "pk": false,
+          "fk": false,
+          "unique": false,
+          "not_null": false,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encrypted": false
+        },
+        {
+          "name": "estado",
+          "data_type": "int",
+          "length": 0,
+          "pk": false,
+          "fk": false,
+          "unique": false,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "Referencia a la tabla estado",
+          "encrypted": false
         }
       ],
-      "relations": [],
-        	"grants":[
-            	{"test_admin":["CREATE", "READ", "UPDATE", "DELETE"]},
-            	{"test_client":["READ"]}
-        	]
+      "relations": [
+        {
+          "local_attribute": "estado",
+          "referenced_table": "estado",
+          "referenced_attribute": "id"
+        }
+      ],
+      "grants": [
+        {
+          "agro_admin": ["CREATE", "READ", "UPDATE", "DELETE"]
+        },
+        {
+          "agro_client": ["READ"]
+        }
+      ]
+    },
+
+    {
+      "name": "modulo_metodo",
+      "descripcion": "",
+      "attributes": [
+        {
+          "name": "id",
+          "data_type": "int",
+          "length": 0,
+          "pk": true,
+          "fk": false,
+          "unique": true,
+          "not_null": true,
+          "autoincrement": true,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encrypted": false
+        },
+        {
+          "name": "modulo_id",
+          "data_type": "int",
+          "length": 0,
+          "pk": false,
+          "fk": true,
+          "unique": false,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "Referencia a la tabla modulo",
+          "encrypted": false
+        },
+        {
+          "name": "metodo_id",
+          "data_type": "int",
+          "length": 0,
+          "pk": false,
+          "fk": true,
+          "unique": false,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "Referencia a la tabla metodo",
+          "encrypted": false
+        },
+        {
+          "name": "uri",
+          "data_type": "string",
+          "length": 255,
+          "pk": false,
+          "fk": false,
+          "unique": false,
+          "not_null": false,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encrypted": false
+        },
+        {
+          "name": "estado",
+          "data_type": "int",
+          "length": 0,
+          "pk": false,
+          "fk": false,
+          "unique": false,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "Referencia a la tabla estado",
+          "encrypted": false
+        }
+      ],
+      "relations": [
+        {
+          "local_attribute": "modulo_id",
+          "referenced_table": "modulo",
+          "referenced_attribute": "id"
+        },
+        {
+          "local_attribute": "metodo_id",
+          "referenced_table": "metodo",
+          "referenced_attribute": "id"
+        },
+        {
+          "local_attribute": "estado",
+          "referenced_table": "estado",
+          "referenced_attribute": "id"
+        }
+      ],
+      "grants": [
+        {
+          "agro_admin": ["CREATE", "READ", "UPDATE", "DELETE"]
+        },
+        {
+          "agro_client": ["READ"]
+        }
+      ]
     },
     {
       "name": "permisos",
@@ -1202,10 +1162,10 @@
           "default": "",
           "range": "",
           "descripcion": "",
-          "encryted": false
+          "encrypted": false
         },
         {
-          "name": "perfil",
+          "name": "modulo_metodo_id",
           "data_type": "int",
           "length": 0,
           "pk": false,
@@ -1215,11 +1175,25 @@
           "autoincrement": false,
           "default": "",
           "range": "",
-          "descripcion": "Foreign key de perfil",
-          "encryted": false
+          "descripcion": "Referencia a la tabla modulo_metodo",
+          "encrypted": false
         },
         {
-          "name": "modulo",
+          "name": "rol",
+          "data_type": "string",
+          "length": 50,
+          "pk": false,
+          "fk": false,
+          "unique": false,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encrypted": false
+        },
+        {
+          "name": "metodo_id",
           "data_type": "int",
           "length": 0,
           "pk": false,
@@ -1229,11 +1203,51 @@
           "autoincrement": false,
           "default": "",
           "range": "",
-          "descripcion": "Foreign key de modulo",
-          "encryted": false
+          "descripcion": "Referencia a la tabla metodo",
+          "encrypted": false
+        }
+      ],
+      "relations": [
+        {
+          "local_attribute": "modulo_metodo_id",
+          "referenced_table": "modulo_metodo",
+          "referenced_attribute": "id"
         },
         {
-          "name": "tipo_permiso",
+          "local_attribute": "metodo_id",
+          "referenced_table": "metodo",
+          "referenced_attribute": "id"
+        }
+      ],
+      "grants": [
+        {
+          "agro_admin": ["CREATE", "READ", "UPDATE", "DELETE"]
+        },
+        {
+          "agro_client": ["READ"]
+        }
+      ]
+    },
+    {
+      "name": "sesion",
+      "descripcion": "",
+      "attributes": [
+        {
+          "name": "id",
+          "data_type": "int",
+          "length": 0,
+          "pk": true,
+          "fk": false,
+          "unique": true,
+          "not_null": true,
+          "autoincrement": true,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encrypted": false
+        },
+        {
+          "name": "usuario_id",
           "data_type": "int",
           "length": 0,
           "pk": false,
@@ -1243,34 +1257,278 @@
           "autoincrement": false,
           "default": "",
           "range": "",
-          "descripcion": "Foreign key de tipo_permiso",
+          "descripcion": "Referencia a la tabla usuario",
+          "encrypted": false
+        },
+        {
+          "name": "fecha_hora_start",
+          "data_type": "timestamp",
+          "length": 0,
+          "pk": false,
+          "fk": false,
+          "unique": false,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encrypted": false
+        },
+        {
+          "name": "fecha_hora_end",
+          "data_type": "timestamp",
+          "length": 0,
+          "pk": false,
+          "fk": false,
+          "unique": false,
+          "not_null": false,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encrypted": false
+        },
+        {
+          "name": "direccion_ip",
+          "data_type": "string",
+          "length": 50,
+          "pk": false,
+          "fk": false,
+          "unique": false,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encrypted": false
+        }
+      ],
+      "relations": [
+        {
+          "local_attribute": "usuario_id",
+          "referenced_table": "usuario",
+          "referenced_attribute": "id"
+        }
+      ],
+      "grants": [
+        {
+          "agro_admin": ["CREATE", "READ", "UPDATE", "DELETE"]
+        },
+        {
+          "agro_client": ["READ"]
+        }
+      ]
+    },
+
+    {
+      "name": "empresa",
+      "descripcion": "",
+      "attributes": [
+        {
+          "name": "id",
+          "data_type": "int",
+          "length": 0,
+          "pk": true,
+          "fk": false,
+          "unique": true,
+          "not_null": true,
+          "autoincrement": true,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encryted": false
+        },
+        {
+          "name": "tipo_identificacion",
+          "data_type": "int",
+          "length": 0,
+          "pk": false,
+          "fk": true,
+          "unique": false,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "Referencia a la tabla tipo_identificacion",
+          "encryted": false
+        },
+        {
+          "name": "identificacion",
+          "data_type": "int",
+          "length": 20,
+          "pk": false,
+          "fk": false,
+          "unique": true,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encryted": false
+        },
+        {
+          "name": "nombre",
+          "data_type": "string",
+          "length": 100,
+          "pk": false,
+          "fk": false,
+          "unique": false,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encryted": false
+        },
+        {
+          "name": "descripcion",
+          "data_type": "string",
+          "length": 255,
+          "pk": false,
+          "fk": false,
+          "unique": false,
+          "not_null": false,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encryted": false
+        },
+        {
+          "name": "estado",
+          "data_type": "int",
+          "length": 0,
+          "pk": false,
+          "fk": true,
+          "unique": false,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "Referencia a la tabla estado",
           "encryted": false
         }
       ],
       "relations": [
         {
-          "local_attribute": "perfil",
-          "referenced_table": "perfil",
+          "local_attribute": "tipo_identificacion",
+          "referenced_table": "tipo_identificacion",
           "referenced_attribute": "id"
         },
         {
-          "local_attribute": "modulo",
-          "referenced_table": "modulo",
-          "referenced_attribute": "id"
-        },
-        {
-          "local_attribute": "tipo_permiso",
-          "referenced_table": "tipo_permiso",
+          "local_attribute": "estado",
+          "referenced_table": "estado",
           "referenced_attribute": "id"
         }
       ],
-        	"grants":[
-            	{"test_admin":["CREATE", "READ", "UPDATE", "DELETE"]},
-            	{"test_client":["READ"]}
-        	]
+      "grants": [
+        {
+          "agro_admin": ["CREATE", "READ", "UPDATE", "DELETE"]
+        },
+        {
+          "agro_client": ["READ"]
+        }
+      ]
+    },
+
+    {
+      "name": "grupo",
+      "descripcion": "",
+      "attributes": [
+        {
+          "name": "id",
+          "data_type": "int",
+          "length": 0,
+          "pk": true,
+          "fk": false,
+          "unique": true,
+          "not_null": true,
+          "autoincrement": true,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encryted": false
+        },
+        {
+          "name": "nombre",
+          "data_type": "string",
+          "length": 100,
+          "pk": false,
+          "fk": false,
+          "unique": false,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encryted": false
+        },
+        {
+          "name": "empresa_id",
+          "data_type": "int",
+          "length": 0,
+          "pk": false,
+          "fk": true,
+          "unique": false,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "Referencia a la tabla empresa",
+          "encryted": false
+        },
+        {
+          "name": "descripcion",
+          "data_type": "string",
+          "length": 255,
+          "pk": false,
+          "fk": false,
+          "unique": false,
+          "not_null": false,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encryted": false
+        },
+        {
+          "name": "estado",
+          "data_type": "int",
+          "length": 0,
+          "pk": false,
+          "fk": true,
+          "unique": false,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "Referencia a la tabla estado",
+          "encryted": false
+        }
+      ],
+      "relations": [
+        {
+          "local_attribute": "empresa_id",
+          "referenced_table": "empresa",
+          "referenced_attribute": "id"
+        },
+        {
+          "local_attribute": "estado",
+          "referenced_table": "estado",
+          "referenced_attribute": "id"
+        }
+      ],
+      "grants": [
+        {
+          "agro_admin": ["CREATE", "READ", "UPDATE", "DELETE"]
+        },
+        {
+          "agro_client": ["READ"]
+        }
+      ]
     },
     {
-      "name": "panelcontrol",
+      "name": "tipo_sede",
       "descripcion": "",
       "attributes": [
         {
@@ -1324,9 +1582,9 @@
           "unique": false,
           "not_null": true,
           "autoincrement": false,
-          "default": "true",
+          "default": "",
           "range": "",
-          "descripcion": "",
+          "descripcion": "Referencia a la tabla estado",
           "encryted": false
         }
       ],
@@ -1337,13 +1595,204 @@
           "referenced_attribute": "id"
         }
       ],
-        	"grants":[
-            	{"test_admin":["CREATE", "READ", "UPDATE", "DELETE"]},
-            	{"test_client":["READ"]}
-        	]
+      "grants": [
+        {
+          "agro_admin": ["CREATE", "READ", "UPDATE", "DELETE"]
+        },
+        {
+          "agro_client": ["READ"]
+        }
+      ]
     },
+
     {
-      "name": "panelcontrol_menu",
+      "name": "sede",
+      "descripcion": "",
+      "attributes": [
+        {
+          "name": "id",
+          "data_type": "int",
+          "length": 0,
+          "pk": true,
+          "fk": false,
+          "unique": true,
+          "not_null": true,
+          "autoincrement": true,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encryted": false
+        },
+        {
+          "name": "grupo_id",
+          "data_type": "int",
+          "length": 0,
+          "pk": false,
+          "fk": true,
+          "unique": false,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "Referencia a la tabla grupo",
+          "encryted": false
+        },
+        {
+          "name": "tipo_sede_id",
+          "data_type": "int",
+          "length": 0,
+          "pk": false,
+          "fk": true,
+          "unique": false,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "Referencia a la tabla tipo_sede",
+          "encryted": false
+        },
+        {
+          "name": "nombre",
+          "data_type": "string",
+          "length": 100,
+          "pk": false,
+          "fk": false,
+          "unique": false,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encryted": false
+        },
+        {
+          "name": "municipio_id",
+          "data_type": "int",
+          "length": 0,
+          "pk": false,
+          "fk": true,
+          "unique": false,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "Referencia a la tabla municipio",
+          "encryted": false
+        },
+        {
+          "name": "geolocalizacion",
+          "data_type": "string",
+          "length": 255,
+          "pk": false,
+          "fk": false,
+          "unique": false,
+          "not_null": false,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encryted": false
+        },
+        {
+          "name": "coordenadas",
+          "data_type": "string",
+          "length": 255,
+          "pk": false,
+          "fk": false,
+          "unique": false,
+          "not_null": false,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encryted": false
+        },
+        {
+          "name": "area",
+          "data_type": "double precision",
+          "length": 0,
+          "pk": false,
+          "fk": false,
+          "unique": false,
+          "not_null": false,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encryted": false
+        },
+        {
+          "name": "comuna",
+          "data_type": "string",
+          "length": 100,
+          "pk": false,
+          "fk": false,
+          "unique": false,
+          "not_null": false,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encryted": false
+        },
+        {
+          "name": "descripcion",
+          "data_type": "string",
+          "length": 255,
+          "pk": false,
+          "fk": false,
+          "unique": false,
+          "not_null": false,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encryted": false
+        },
+        {
+          "name": "estado",
+          "data_type": "int",
+          "length": 0,
+          "pk": false,
+          "fk": true,
+          "unique": false,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "Referencia a la tabla estado",
+          "encryted": false
+        }
+      ],
+      "relations": [
+        {
+          "local_attribute": "grupo_id",
+          "referenced_table": "grupo",
+          "referenced_attribute": "id"
+        },
+        {
+          "local_attribute": "tipo_sede_id",
+          "referenced_table": "tipo_sede",
+          "referenced_attribute": "id"
+        },
+        {
+          "local_attribute": "estado",
+          "referenced_table": "estado",
+          "referenced_attribute": "id"
+        }
+      ],
+      "grants": [
+        {
+          "agro_admin": ["CREATE", "READ", "UPDATE", "DELETE"]
+        },
+        {
+          "agro_client": ["READ"]
+        }
+      ]
+    },
+
+    {
+      "name": "tipo_bloque",
       "descripcion": "",
       "attributes": [
         {
@@ -1373,13 +1822,1998 @@
           "range": "",
           "descripcion": "",
           "encryted": false
+        },
+        {
+          "name": "descripcion",
+          "data_type": "string",
+          "length": 255,
+          "pk": false,
+          "fk": false,
+          "unique": false,
+          "not_null": false,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encryted": false
+        },
+        {
+          "name": "estado",
+          "data_type": "int",
+          "length": 0,
+          "pk": false,
+          "fk": true,
+          "unique": false,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "Referencia a la tabla estado",
+          "encryted": false
         }
       ],
-      "relations": [],
-        	"grants":[
-            	{"test_admin":["CREATE", "READ", "UPDATE", "DELETE"]},
-            	{"test_client":["READ"]}
-        	]
+      "relations": [
+        {
+          "local_attribute": "estado",
+          "referenced_table": "estado",
+          "referenced_attribute": "id"
+        }
+      ],
+      "grants": [
+        {
+          "agro_admin": ["CREATE", "READ", "UPDATE", "DELETE"]
+        },
+        {
+          "agro_client": ["READ"]
+        }
+      ]
+    },
+
+    {
+      "name": "bloque",
+      "descripcion": "",
+      "attributes": [
+        {
+          "name": "id",
+          "data_type": "int",
+          "length": 0,
+          "pk": true,
+          "fk": false,
+          "unique": true,
+          "not_null": true,
+          "autoincrement": true,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encrypted": false
+        },
+        {
+          "name": "sede_id",
+          "data_type": "int",
+          "length": 0,
+          "pk": false,
+          "fk": true,
+          "unique": false,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "Referencia a la tabla sede",
+          "encrypted": false
+        },
+        {
+          "name": "tipo_bloque_id",
+          "data_type": "int",
+          "length": 0,
+          "pk": false,
+          "fk": true,
+          "unique": false,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "Referencia a la tabla tipo_bloque",
+          "encrypted": false
+        },
+        {
+          "name": "nombre",
+          "data_type": "string",
+          "length": 100,
+          "pk": false,
+          "fk": false,
+          "unique": false,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encrypted": false
+        },
+        {
+          "name": "geolocalizacion",
+          "data_type": "string",
+          "length": 255,
+          "pk": false,
+          "fk": false,
+          "unique": false,
+          "not_null": false,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encrypted": false
+        },
+        {
+          "name": "coordenadas",
+          "data_type": "string",
+          "length": 255,
+          "pk": false,
+          "fk": false,
+          "unique": false,
+          "not_null": false,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encrypted": false
+        },
+        {
+          "name": "numero_pisos",
+          "data_type": "int",
+          "length": 3,
+          "pk": false,
+          "fk": false,
+          "unique": false,
+          "not_null": false,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encrypted": false
+        },
+        {
+          "name": "descripcion",
+          "data_type": "string",
+          "length": 255,
+          "pk": false,
+          "fk": false,
+          "unique": false,
+          "not_null": false,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encrypted": false
+        },
+        {
+          "name": "estado",
+          "data_type": "int",
+          "length": 0,
+          "pk": false,
+          "fk": true,
+          "unique": false,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "Referencia a la tabla estado",
+          "encrypted": false
+        }
+      ],
+      "relations": [
+        {
+          "local_attribute": "sede_id",
+          "referenced_table": "sede",
+          "referenced_attribute": "id"
+        },
+        {
+          "local_attribute": "tipo_bloque_id",
+          "referenced_table": "tipo_bloque",
+          "referenced_attribute": "id"
+        },
+        {
+          "local_attribute": "estado",
+          "referenced_table": "estado",
+          "referenced_attribute": "id"
+        }
+      ],
+      "grants": [
+        {
+          "agro_admin": ["CREATE", "READ", "UPDATE", "DELETE"]
+        },
+        {
+          "agro_client": ["READ"]
+        }
+      ]
+    },
+
+    {
+      "name": "tipo_espacio",
+      "descripcion": "",
+      "attributes": [
+        {
+          "name": "id",
+          "data_type": "int",
+          "length": 0,
+          "pk": true,
+          "fk": false,
+          "unique": true,
+          "not_null": true,
+          "autoincrement": true,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encrypted": false
+        },
+        {
+          "name": "nombre",
+          "data_type": "string",
+          "length": 100,
+          "pk": false,
+          "fk": false,
+          "unique": false,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encrypted": false
+        },
+        {
+          "name": "descripcion",
+          "data_type": "string",
+          "length": 255,
+          "pk": false,
+          "fk": false,
+          "unique": false,
+          "not_null": false,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encrypted": false
+        },
+        {
+          "name": "estado",
+          "data_type": "int",
+          "length": 0,
+          "pk": false,
+          "fk": true,
+          "unique": false,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "Referencia a la tabla estado",
+          "encrypted": false
+        }
+      ],
+      "relations": [
+        {
+          "local_attribute": "estado",
+          "referenced_table": "estado",
+          "referenced_attribute": "id"
+        }
+      ],
+      "grants": [
+        {
+          "agro_admin": ["CREATE", "READ", "UPDATE", "DELETE"]
+        },
+        {
+          "agro_client": ["READ"]
+        }
+      ]
+    },
+
+    {
+      "name": "espacio",
+      "descripcion": "",
+      "attributes": [
+        {
+          "name": "id",
+          "data_type": "int",
+          "length": 0,
+          "pk": true,
+          "fk": false,
+          "unique": true,
+          "not_null": true,
+          "autoincrement": true,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encrypted": false
+        },
+        {
+          "name": "bloque_id",
+          "data_type": "int",
+          "length": 0,
+          "pk": false,
+          "fk": true,
+          "unique": false,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "Referencia a la tabla bloque",
+          "encrypted": false
+        },
+        {
+          "name": "tipo_espacio_id",
+          "data_type": "int",
+          "length": 0,
+          "pk": false,
+          "fk": true,
+          "unique": false,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "Referencia a la tabla tipo_espacio",
+          "encrypted": false
+        },
+        {
+          "name": "nombre",
+          "data_type": "string",
+          "length": 100,
+          "pk": false,
+          "fk": false,
+          "unique": false,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encrypted": false
+        },
+        {
+          "name": "geolocacizacion",
+          "data_type": "string",
+          "length": 255,
+          "pk": false,
+          "fk": false,
+          "unique": false,
+          "not_null": false,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encrypted": false
+        },
+        {
+          "name": "coordenadas",
+          "data_type": "string",
+          "length": 255,
+          "pk": false,
+          "fk": false,
+          "unique": false,
+          "not_null": false,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encrypted": false
+        },
+        {
+          "name": "descripcion",
+          "data_type": "string",
+          "length": 255,
+          "pk": false,
+          "fk": false,
+          "unique": false,
+          "not_null": false,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encrypted": false
+        },
+        {
+          "name": "estado",
+          "data_type": "int",
+          "length": 0,
+          "pk": false,
+          "fk": true,
+          "unique": false,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "Referencia a la tabla estado",
+          "encrypted": false
+        }
+      ],
+      "relations": [
+        {
+          "local_attribute": "bloque_id",
+          "referenced_table": "bloque",
+          "referenced_attribute": "id"
+        },
+        {
+          "local_attribute": "tipo_espacio_id",
+          "referenced_table": "tipo_espacio",
+          "referenced_attribute": "id"
+        },
+        {
+          "local_attribute": "estado",
+          "referenced_table": "estado",
+          "referenced_attribute": "id"
+        }
+      ],
+      "grants": [
+        {
+          "agro_admin": ["CREATE", "READ", "UPDATE", "DELETE"]
+        },
+        {
+          "agro_client": ["READ"]
+        }
+      ]
+    },
+
+    {
+      "name": "categoria_actividad",
+      "descripcion": "",
+      "attributes": [
+        {
+          "name": "id",
+          "data_type": "int",
+          "length": 0,
+          "pk": true,
+          "fk": false,
+          "unique": true,
+          "not_null": true,
+          "autoincrement": true,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encrypted": false
+        },
+        {
+          "name": "nombre",
+          "data_type": "string",
+          "length": 100,
+          "pk": false,
+          "fk": false,
+          "unique": false,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encrypted": false
+        },
+        {
+          "name": "descripcion",
+          "data_type": "string",
+          "length": 255,
+          "pk": false,
+          "fk": false,
+          "unique": false,
+          "not_null": false,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encrypted": false
+        },
+        {
+          "name": "estado",
+          "data_type": "int",
+          "length": 0,
+          "pk": false,
+          "fk": true,
+          "unique": false,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "Referencia a la tabla estado",
+          "encrypted": false
+        }
+      ],
+      "relations": [
+        {
+          "local_attribute": "estado",
+          "referenced_table": "estado",
+          "referenced_attribute": "id"
+        }
+      ],
+      "grants": [
+        {
+          "agro_admin": ["CREATE", "READ", "UPDATE", "DELETE"]
+        },
+        {
+          "agro_client": ["READ"]
+        }
+      ]
+    },
+
+    {
+      "name": "tipo_actividad",
+      "descripcion": "",
+      "attributes": [
+        {
+          "name": "id",
+          "data_type": "int",
+          "length": 0,
+          "pk": true,
+          "fk": false,
+          "unique": true,
+          "not_null": true,
+          "autoincrement": true,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encrypted": false
+        },
+        {
+          "name": "categoria_actividad_id",
+          "data_type": "int",
+          "length": 0,
+          "pk": false,
+          "fk": true,
+          "unique": false,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "Referencia a la tabla categoria_actividad",
+          "encrypted": false
+        },
+        {
+          "name": "nombre",
+          "data_type": "string",
+          "length": 100,
+          "pk": false,
+          "fk": false,
+          "unique": false,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encrypted": false
+        },
+        {
+          "name": "descripcion",
+          "data_type": "string",
+          "length": 255,
+          "pk": false,
+          "fk": false,
+          "unique": false,
+          "not_null": false,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encrypted": false
+        },
+        {
+          "name": "estado",
+          "data_type": "int",
+          "length": 0,
+          "pk": false,
+          "fk": true,
+          "unique": false,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "Referencia a la tabla estado",
+          "encrypted": false
+        }
+      ],
+      "relations": [
+        {
+          "local_attribute": "categoria_actividad_id",
+          "referenced_table": "categoria_actividad",
+          "referenced_attribute": "id"
+        },
+        {
+          "local_attribute": "estado",
+          "referenced_table": "estado",
+          "referenced_attribute": "id"
+        }
+      ],
+      "grants": [
+        {
+          "agro_admin": ["CREATE", "READ", "UPDATE", "DELETE"]
+        },
+        {
+          "agro_client": ["READ"]
+        }
+      ]
+    },
+
+    {
+      "name": "actividad_ocupacion",
+      "descripcion": "",
+      "attributes": [
+        {
+          "name": "id",
+          "data_type": "int",
+          "length": 0,
+          "pk": true,
+          "fk": false,
+          "unique": true,
+          "not_null": true,
+          "autoincrement": true,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encrypted": false
+        },
+        {
+          "name": "nombre",
+          "data_type": "string",
+          "length": 100,
+          "pk": false,
+          "fk": false,
+          "unique": false,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encrypted": false
+        },
+        {
+          "name": "tipo_actividad_id",
+          "data_type": "int",
+          "length": 0,
+          "pk": false,
+          "fk": true,
+          "unique": false,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "Referencia a la tabla tipo_actividad",
+          "encrypted": false
+        },
+        {
+          "name": "evaluacion",
+          "data_type": "string",
+          "length": 255,
+          "pk": false,
+          "fk": false,
+          "unique": false,
+          "not_null": false,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encrypted": false
+        }
+      ],
+      "relations": [
+        {
+          "local_attribute": "tipo_actividad_id",
+          "referenced_table": "tipo_actividad",
+          "referenced_attribute": "id"
+        }
+      ],
+      "grants": [
+        {
+          "agro_admin": ["CREATE", "READ", "UPDATE", "DELETE"]
+        },
+        {
+          "agro_client": ["READ"]
+        }
+      ]
+    },
+
+    {
+      "name": "espacio_ocupacion",
+      "descripcion": "",
+      "attributes": [
+        {
+          "name": "id",
+          "data_type": "int",
+          "length": 0,
+          "pk": true,
+          "fk": false,
+          "unique": true,
+          "not_null": true,
+          "autoincrement": true,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encrypted": false
+        },
+        {
+          "name": "espacio_id",
+          "data_type": "int",
+          "length": 0,
+          "pk": false,
+          "fk": true,
+          "unique": false,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "Referencia a la tabla espacio",
+          "encrypted": false
+        },
+        {
+          "name": "actividad_ocupacion_id",
+          "data_type": "int",
+          "length": 0,
+          "pk": false,
+          "fk": true,
+          "unique": false,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "Referencia a la tabla actividad_ocupacion",
+          "encrypted": false
+        },
+        {
+          "name": "fecha_inicio",
+          "data_type": "date",
+          "length": 0,
+          "pk": false,
+          "fk": false,
+          "unique": false,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encrypted": false
+        },
+        {
+          "name": "fecha_fin",
+          "data_type": "date",
+          "length": 0,
+          "pk": false,
+          "fk": false,
+          "unique": false,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encrypted": false
+        },
+        {
+          "name": "estado",
+          "data_type": "int",
+          "length": 0,
+          "pk": false,
+          "fk": true,
+          "unique": false,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "Referencia a la tabla estado",
+          "encrypted": false
+        }
+      ],
+      "relations": [
+        {
+          "local_attribute": "espacio_id",
+          "referenced_table": "espacio",
+          "referenced_attribute": "id"
+        },
+        {
+          "local_attribute": "actividad_ocupacion_id",
+          "referenced_table": "actividad_ocupacion",
+          "referenced_attribute": "id"
+        },
+        {
+          "local_attribute": "estado",
+          "referenced_table": "estado",
+          "referenced_attribute": "id"
+        }
+      ],
+      "grants": [
+        {
+          "agro_admin": ["CREATE", "READ", "UPDATE", "DELETE"]
+        },
+        {
+          "agro_client": ["READ"]
+        }
+      ]
+    },
+
+    {
+      "name": "almacen",
+      "descripcion": "",
+      "attributes": [
+        {
+          "name": "id",
+          "data_type": "int",
+          "length": 0,
+          "pk": true,
+          "fk": false,
+          "unique": true,
+          "not_null": true,
+          "autoincrement": true,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encrypted": false
+        },
+        {
+          "name": "nombre",
+          "data_type": "string",
+          "length": 100,
+          "pk": false,
+          "fk": false,
+          "unique": false,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encrypted": false
+        },
+        {
+          "name": "sede_id",
+          "data_type": "int",
+          "length": 0,
+          "pk": false,
+          "fk": true,
+          "unique": false,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "Referencia a la tabla sede",
+          "encrypted": false
+        },
+        {
+          "name": "geolocalizacion",
+          "data_type": "string",
+          "length": 255,
+          "pk": false,
+          "fk": false,
+          "unique": false,
+          "not_null": false,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encrypted": false
+        },
+        {
+          "name": "coordenadas",
+          "data_type": "string",
+          "length": 255,
+          "pk": false,
+          "fk": false,
+          "unique": false,
+          "not_null": false,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encrypted": false
+        },
+        {
+          "name": "descripcion",
+          "data_type": "string",
+          "length": 255,
+          "pk": false,
+          "fk": false,
+          "unique": false,
+          "not_null": false,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encrypted": false
+        },
+        {
+          "name": "estado",
+          "data_type": "int",
+          "length": 0,
+          "pk": false,
+          "fk": true,
+          "unique": false,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "Referencia a la tabla estado",
+          "encrypted": false
+        }
+      ],
+      "relations": [
+        {
+          "local_attribute": "sede_id",
+          "referenced_table": "sede",
+          "referenced_attribute": "id"
+        },
+        {
+          "local_attribute": "estado",
+          "referenced_table": "estado",
+          "referenced_attribute": "id"
+        }
+      ],
+      "grants": [
+        {
+          "agro_admin": ["CREATE", "READ", "UPDATE", "DELETE"]
+        },
+        {
+          "agro_client": ["READ"]
+        }
+      ]
+    },
+
+    {
+      "name": "producto_categoria",
+      "descripcion": "",
+      "attributes": [
+        {
+          "name": "id",
+          "data_type": "int",
+          "length": 0,
+          "pk": true,
+          "fk": false,
+          "unique": true,
+          "not_null": true,
+          "autoincrement": true,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encrypted": false
+        },
+        {
+          "name": "nombre",
+          "data_type": "string",
+          "length": 100,
+          "pk": false,
+          "fk": false,
+          "unique": false,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encrypted": false
+        },
+        {
+          "name": "descripcion",
+          "data_type": "string",
+          "length": 255,
+          "pk": false,
+          "fk": false,
+          "unique": false,
+          "not_null": false,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encrypted": false
+        },
+        {
+          "name": "estado",
+          "data_type": "int",
+          "length": 0,
+          "pk": false,
+          "fk": true,
+          "unique": false,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "Referencia a la tabla estado",
+          "encrypted": false
+        }
+      ],
+      "relations": [
+        {
+          "local_attribute": "estado",
+          "referenced_table": "estado",
+          "referenced_attribute": "id"
+        }
+      ],
+      "grants": [
+        {
+          "agro_admin": ["CREATE", "READ", "UPDATE", "DELETE"]
+        },
+        {
+          "agro_client": ["READ"]
+        }
+      ]
+    },
+
+    {
+      "name": "producto",
+      "descripcion": "",
+      "attributes": [
+        {
+          "name": "id",
+          "data_type": "int",
+          "length": 0,
+          "pk": true,
+          "fk": false,
+          "unique": true,
+          "not_null": true,
+          "autoincrement": true,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encrypted": false
+        },
+        {
+          "name": "nombre",
+          "data_type": "string",
+          "length": 100,
+          "pk": false,
+          "fk": false,
+          "unique": false,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encrypted": false
+        },
+        {
+          "name": "producto_categoria_id",
+          "data_type": "int",
+          "length": 0,
+          "pk": false,
+          "fk": true,
+          "unique": false,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "Referencia a la tabla producto_categoria",
+          "encrypted": false
+        }
+      ],
+      "relations": [
+        {
+          "local_attribute": "producto_categoria_id",
+          "referenced_table": "producto_categoria",
+          "referenced_attribute": "id"
+        }
+      ],
+      "grants": [
+        {
+          "agro_admin": ["CREATE", "READ", "UPDATE", "DELETE"]
+        },
+        {
+          "agro_client": ["READ"]
+        }
+      ]
+    },
+
+    {
+      "name": "producto_presentacion",
+      "descripcion": "",
+      "attributes": [
+        {
+          "name": "id",
+          "data_type": "int",
+          "length": 0,
+          "pk": true,
+          "fk": false,
+          "unique": true,
+          "not_null": true,
+          "autoincrement": true,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encrypted": false
+        },
+        {
+          "name": "producto_id",
+          "data_type": "int",
+          "length": 0,
+          "pk": false,
+          "fk": true,
+          "unique": false,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "Referencia a la tabla producto",
+          "encrypted": false
+        },
+        {
+          "name": "nombre",
+          "data_type": "string",
+          "length": 100,
+          "pk": false,
+          "fk": false,
+          "unique": false,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encrypted": false
+        },
+        {
+          "name": "descripcion",
+          "data_type": "string",
+          "length": 255,
+          "pk": false,
+          "fk": false,
+          "unique": false,
+          "not_null": false,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encrypted": false
+        },
+        {
+          "name": "estado",
+          "data_type": "int",
+          "length": 0,
+          "pk": false,
+          "fk": true,
+          "unique": false,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "Referencia a la tabla estado",
+          "encrypted": false
+        }
+      ],
+      "relations": [
+        {
+          "local_attribute": "producto_id",
+          "referenced_table": "producto",
+          "referenced_attribute": "id"
+        },
+        {
+          "local_attribute": "estado",
+          "referenced_table": "estado",
+          "referenced_attribute": "id"
+        }
+      ],
+      "grants": [
+        {
+          "agro_admin": ["CREATE", "READ", "UPDATE", "DELETE"]
+        },
+        {
+          "agro_client": ["READ"]
+        }
+      ]
+    },
+
+    {
+      "name": "producto_presentacion",
+      "descripcion": "",
+      "attributes": [
+        {
+          "name": "id",
+          "data_type": "int",
+          "length": 0,
+          "pk": true,
+          "fk": false,
+          "unique": true,
+          "not_null": true,
+          "autoincrement": true,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encrypted": false
+        },
+        {
+          "name": "producto_id",
+          "data_type": "int",
+          "length": 0,
+          "pk": false,
+          "fk": true,
+          "unique": false,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "Referencia a la tabla producto",
+          "encrypted": false
+        },
+        {
+          "name": "nombre",
+          "data_type": "string",
+          "length": 100,
+          "pk": false,
+          "fk": false,
+          "unique": false,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encrypted": false
+        },
+        {
+          "name": "descripcion",
+          "data_type": "string",
+          "length": 255,
+          "pk": false,
+          "fk": false,
+          "unique": false,
+          "not_null": false,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encrypted": false
+        },
+        {
+          "name": "estado",
+          "data_type": "int",
+          "length": 0,
+          "pk": false,
+          "fk": true,
+          "unique": false,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "Referencia a la tabla estado",
+          "encrypted": false
+        }
+      ],
+      "relations": [
+        {
+          "local_attribute": "producto_id",
+          "referenced_table": "producto",
+          "referenced_attribute": "id"
+        },
+        {
+          "local_attribute": "estado",
+          "referenced_table": "estado",
+          "referenced_attribute": "id"
+        }
+      ],
+      "grants": [
+        {
+          "agro_admin": ["CREATE", "READ", "UPDATE", "DELETE"]
+        },
+        {
+          "agro_client": ["READ"]
+        }
+      ]
+    },
+    {
+      "name": "proveedor",
+      "descripcion": "",
+      "attributes": [
+        {
+          "name": "id",
+          "data_type": "int",
+          "length": 0,
+          "pk": true,
+          "fk": false,
+          "unique": true,
+          "not_null": true,
+          "autoincrement": true,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encrypted": false
+        },
+        {
+          "name": "empresa_id",
+          "data_type": "int",
+          "length": 0,
+          "pk": false,
+          "fk": true,
+          "unique": false,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "Referencia a la tabla empresa",
+          "encrypted": false
+        },
+        {
+          "name": "fecha_creacion",
+          "data_type": "date",
+          "length": 0,
+          "pk": false,
+          "fk": false,
+          "unique": false,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encrypted": false
+        },
+        {
+          "name": "estado",
+          "data_type": "int",
+          "length": 0,
+          "pk": false,
+          "fk": true,
+          "unique": false,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "Referencia a la tabla estado",
+          "encrypted": false
+        }
+      ],
+      "relations": [
+        {
+          "local_attribute": "empresa_id",
+          "referenced_table": "empresa",
+          "referenced_attribute": "id"
+        },
+        {
+          "local_attribute": "estado",
+          "referenced_table": "estado",
+          "referenced_attribute": "id"
+        }
+      ],
+      "grants": [
+        {
+          "agro_admin": ["CREATE", "READ", "UPDATE", "DELETE"]
+        },
+        {
+          "agro_client": ["READ"]
+        }
+      ]
+    },
+
+    {
+      "name": "almacen_entrada",
+      "descripcion": "",
+      "attributes": [
+        {
+          "name": "id",
+          "data_type": "int",
+          "length": 0,
+          "pk": true,
+          "fk": false,
+          "unique": true,
+          "not_null": true,
+          "autoincrement": true,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encrypted": false
+        },
+        {
+          "name": "proveedor_id",
+          "data_type": "int",
+          "length": 0,
+          "pk": false,
+          "fk": true,
+          "unique": false,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "Referencia a la tabla proveedor",
+          "encrypted": false
+        },
+        {
+          "name": "fecha",
+          "data_type": "date",
+          "length": 0,
+          "pk": false,
+          "fk": false,
+          "unique": false,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encrypted": false
+        },
+        {
+          "name": "descripcion",
+          "data_type": "string",
+          "length": 255,
+          "pk": false,
+          "fk": false,
+          "unique": false,
+          "not_null": false,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encrypted": false
+        },
+        {
+          "name": "estado",
+          "data_type": "int",
+          "length": 0,
+          "pk": false,
+          "fk": true,
+          "unique": false,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "Referencia a la tabla estado",
+          "encrypted": false
+        }
+      ],
+      "relations": [
+        {
+          "local_attribute": "proveedor_id",
+          "referenced_table": "proveedor",
+          "referenced_attribute": "id"
+        },
+        {
+          "local_attribute": "estado",
+          "referenced_table": "estado",
+          "referenced_attribute": "id"
+        }
+      ],
+      "grants": [
+        {
+          "agro_admin": ["CREATE", "READ", "UPDATE", "DELETE"]
+        },
+        {
+          "agro_client": ["READ"]
+        }
+      ]
+    },
+
+    {
+      "name": "almacen_entrada_item",
+      "descripcion": "",
+      "attributes": [
+        {
+          "name": "id",
+          "data_type": "int",
+          "length": 0,
+          "pk": true,
+          "fk": false,
+          "unique": true,
+          "not_null": true,
+          "autoincrement": true,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encrypted": false
+        },
+        {
+          "name": "almacen_entrada_id",
+          "data_type": "int",
+          "length": 0,
+          "pk": false,
+          "fk": true,
+          "unique": false,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "Referencia a la tabla almacen_entrada",
+          "encrypted": false
+        },
+        {
+          "name": "producto_id",
+          "data_type": "int",
+          "length": 0,
+          "pk": false,
+          "fk": true,
+          "unique": false,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "Referencia a la tabla producto",
+          "encrypted": false
+        },
+        {
+          "name": "producto_presentacion_id",
+          "data_type": "int",
+          "length": 0,
+          "pk": false,
+          "fk": true,
+          "unique": false,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "Referencia a la tabla producto_presentacion",
+          "encrypted": false
+        },
+        {
+          "name": "cantidad",
+          "data_type": "int",
+          "length": 3,
+          "pk": false,
+          "fk": false,
+          "unique": false,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encrypted": false
+        },
+        {
+          "name": "precio",
+          "data_type": "double precision",
+          "length": 0,
+          "pk": false,
+          "fk": false,
+          "unique": false,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encrypted": false
+        },
+        {
+          "name": "estado",
+          "data_type": "int",
+          "length": 0,
+          "pk": false,
+          "fk": true,
+          "unique": false,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "Referencia a la tabla estado",
+          "encrypted": false
+        }
+      ],
+      "relations": [
+        {
+          "local_attribute": "almacen_entrada_id",
+          "referenced_table": "almacen_entrada",
+          "referenced_attribute": "id"
+        },
+        {
+          "local_attribute": "producto_id",
+          "referenced_table": "producto",
+          "referenced_attribute": "id"
+        },
+        {
+          "local_attribute": "producto_presentacion_id",
+          "referenced_table": "producto_presentacion",
+          "referenced_attribute": "id"
+        },
+        {
+          "local_attribute": "estado",
+          "referenced_table": "estado",
+          "referenced_attribute": "id"
+        }
+      ],
+      "grants": [
+        {
+          "agro_admin": ["CREATE", "READ", "UPDATE", "DELETE"]
+        },
+        {
+          "agro_client": ["READ"]
+        }
+      ]
+    },
+
+    {
+      "name": "almacen_salida",
+      "descripcion": "",
+      "attributes": [
+        {
+          "name": "id",
+          "data_type": "int",
+          "length": 0,
+          "pk": true,
+          "fk": false,
+          "unique": true,
+          "not_null": true,
+          "autoincrement": true,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encrypted": false
+        },
+        {
+          "name": "fecha",
+          "data_type": "date",
+          "length": 0,
+          "pk": false,
+          "fk": false,
+          "unique": false,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encrypted": false
+        },
+        {
+          "name": "empresa_id",
+          "data_type": "int",
+          "length": 0,
+          "pk": false,
+          "fk": true,
+          "unique": false,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "Referencia a la tabla empresa",
+          "encrypted": false
+        },
+        {
+          "name": "almacen_id",
+          "data_type": "int",
+          "length": 0,
+          "pk": false,
+          "fk": true,
+          "unique": false,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "Referencia a la tabla almacen",
+          "encrypted": false
+        },
+        {
+          "name": "descripcion",
+          "data_type": "string",
+          "length": 255,
+          "pk": false,
+          "fk": false,
+          "unique": false,
+          "not_null": false,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encrypted": false
+        },
+        {
+          "name": "estado",
+          "data_type": "int",
+          "length": 0,
+          "pk": false,
+          "fk": true,
+          "unique": false,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "Referencia a la tabla estado",
+          "encrypted": false
+        }
+      ],
+      "relations": [
+        {
+          "local_attribute": "empresa_id",
+          "referenced_table": "empresa",
+          "referenced_attribute": "id"
+        },
+        {
+          "local_attribute": "almacen_id",
+          "referenced_table": "almacen",
+          "referenced_attribute": "id"
+        },
+        {
+          "local_attribute": "estado",
+          "referenced_table": "estado",
+          "referenced_attribute": "id"
+        }
+      ],
+      "grants": [
+        {
+          "agro_admin": ["CREATE", "READ", "UPDATE", "DELETE"]
+        },
+        {
+          "agro_client": ["READ"]
+        }
+      ]
+    },
+
+    {
+      "name": "almacen_salida_item",
+      "descripcion": "",
+      "attributes": [
+        {
+          "name": "id",
+          "data_type": "int",
+          "length": 0,
+          "pk": true,
+          "fk": false,
+          "unique": true,
+          "not_null": true,
+          "autoincrement": true,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encrypted": false
+        },
+        {
+          "name": "almacen_salida_id",
+          "data_type": "int",
+          "length": 0,
+          "pk": false,
+          "fk": true,
+          "unique": false,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "Referencia a la tabla almacen_salida",
+          "encrypted": false
+        },
+        {
+          "name": "producto_id",
+          "data_type": "int",
+          "length": 0,
+          "pk": false,
+          "fk": true,
+          "unique": false,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "Referencia a la tabla producto",
+          "encrypted": false
+        },
+        {
+          "name": "producto_presentacion_id",
+          "data_type": "int",
+          "length": 0,
+          "pk": false,
+          "fk": true,
+          "unique": false,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "Referencia a la tabla producto_presentacion",
+          "encrypted": false
+        },
+        {
+          "name": "cantidad",
+          "data_type": "int",
+          "length": 3,
+          "pk": false,
+          "fk": false,
+          "unique": false,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encrypted": false
+        },
+        {
+          "name": "precio",
+          "data_type": "double precision",
+          "length": 0,
+          "pk": false,
+          "fk": false,
+          "unique": false,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encrypted": false
+        },
+        {
+          "name": "estado",
+          "data_type": "int",
+          "length": 0,
+          "pk": false,
+          "fk": true,
+          "unique": false,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "Referencia a la tabla estado",
+          "encrypted": false
+        }
+      ],
+      "relations": [
+        {
+          "local_attribute": "almacen_salida_id",
+          "referenced_table": "almacen_salida",
+          "referenced_attribute": "id"
+        },
+        {
+          "local_attribute": "producto_id",
+          "referenced_table": "producto",
+          "referenced_attribute": "id"
+        },
+        {
+          "local_attribute": "producto_presentacion_id",
+          "referenced_table": "producto_presentacion",
+          "referenced_attribute": "id"
+        },
+        {
+          "local_attribute": "estado",
+          "referenced_table": "estado",
+          "referenced_attribute": "id"
+        }
+      ],
+      "grants": [
+        {
+          "agro_admin": ["CREATE", "READ", "UPDATE", "DELETE"]
+        },
+        {
+          "agro_client": ["READ"]
+        }
+      ]
+    },
+
+    {
+      "name": "espacio_actividad",
+      "descripcion": "",
+      "attributes": [
+        {
+          "name": "id",
+          "data_type": "int",
+          "length": 0,
+          "pk": true,
+          "fk": false,
+          "unique": true,
+          "not_null": true,
+          "autoincrement": true,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encrypted": false
+        },
+        {
+          "name": "espacio_id",
+          "data_type": "int",
+          "length": 0,
+          "pk": false,
+          "fk": true,
+          "unique": false,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "Referencia a la tabla espacio",
+          "encrypted": false
+        },
+        {
+          "name": "tipo_actividad_id",
+          "data_type": "int",
+          "length": 0,
+          "pk": false,
+          "fk": true,
+          "unique": false,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "Referencia a la tabla tipo_actividad",
+          "encrypted": false
+        },
+        {
+          "name": "fecha_hora",
+          "data_type": "timestamp",
+          "length": 0,
+          "pk": false,
+          "fk": false,
+          "unique": false,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encrypted": false
+        },
+        {
+          "name": "cantidad",
+          "data_type": "int",
+          "length": 3,
+          "pk": false,
+          "fk": false,
+          "unique": false,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encrypted": false
+        },
+        {
+          "name": "unidad",
+          "data_type": "int",
+          "length": 3,
+          "pk": false,
+          "fk": false,
+          "unique": false,
+          "not_null": false,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encrypted": false
+        },
+        {
+          "name": "precio",
+          "data_type": "double precision",
+          "length": 0,
+          "pk": false,
+          "fk": false,
+          "unique": false,
+          "not_null": false,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encrypted": false
+        },
+        {
+          "name": "evaluacion",
+          "data_type": "string",
+          "length": 255,
+          "pk": false,
+          "fk": false,
+          "unique": false,
+          "not_null": false,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encrypted": false
+        },
+        {
+          "name": "descripcion",
+          "data_type": "string",
+          "length": 255,
+          "pk": false,
+          "fk": false,
+          "unique": false,
+          "not_null": false,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encrypted": false
+        },
+        {
+          "name": "estado",
+          "data_type": "int",
+          "length": 0,
+          "pk": false,
+          "fk": true,
+          "unique": false,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "Referencia a la tabla estado",
+          "encrypted": false
+        }
+      ],
+      "relations": [
+        {
+          "local_attribute": "espacio_id",
+          "referenced_table": "espacio",
+          "referenced_attribute": "id"
+        },
+        {
+          "local_attribute": "tipo_actividad_id",
+          "referenced_table": "tipo_actividad",
+          "referenced_attribute": "id"
+        },
+        {
+          "local_attribute": "estado",
+          "referenced_table": "estado",
+          "referenced_attribute": "id"
+        }
+      ],
+      "grants": [
+        {
+          "agro_admin": ["CREATE", "READ", "UPDATE", "DELETE"]
+        },
+        {
+          "agro_client": ["READ"]
+        }
+      ]
     }
   ]
 }

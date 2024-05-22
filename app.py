@@ -23,17 +23,29 @@ from backend_tester import BackendTester
 parameters = {}
 
 parameters["db_execute"] = True
+<<<<<<< HEAD
 parameters["base_directory"] = "/home/server2/Documents/dinamic_test"
     
 
 parameters["source_base_directory"] = "/home/server2/Documents/dinamic_test"
+=======
+# parameters["base_directory"] = "/home/usco/Documents/test/pruebas"
+parameters["base_directory"] = "/home/usco/dinamic_test/"
+
+    
+parameters["source_base_directory"] = "/home/usco/Documents/workspace-sts"
+>>>>>>> 9f28555 (v1)
 parameters["source_directory"] = os.path.join(
-    parameters["source_base_directory"],
-    "test"
+    parameters["source_base_directory"], 
+    "agro"
     )
 
 
+<<<<<<< HEAD
 parameters["model_directory"] = "/home/server2/Documents/dinamic_test"
+=======
+parameters["model_directory"] = "/home/usco/dinamic_test/agro"
+>>>>>>> 9f28555 (v1)
 parameters["model_name"] = "pruebas1.json"
 
 parameters["model_filename"] = os.path.join(
@@ -81,5 +93,41 @@ backend_tester.test()
 
 
 
+<<<<<<< HEAD
+=======
+
+
+import os
+
+os.chdir("/home/usco/Documents/workspace-sts/agro")
+# os.system("cd /media/usco/data1/dev/workspace-sts/test") 
+
+
+# os.system("mvn clean install") 
+
+# os.system("mvn clean pom.xml")
+os.system("mvn spring-boot:run") 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+>>>>>>> 9f28555 (v1)
 
 

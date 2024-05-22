@@ -35,6 +35,7 @@ class ModelBuilder:
             "string":"String",
             "date":"Date",
             "timestamp":"Timestamp",
+            "double precision":"double",
             "boolean":"boolean"
             }
 
@@ -44,6 +45,7 @@ class ModelBuilder:
         import_list = ""
         import_list += "import java.sql.Timestamp;\n" 
         import_list += "import java.sql.Date;\n" 
+
         
         return import_list
     
