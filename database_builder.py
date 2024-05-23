@@ -37,7 +37,9 @@ class DataBaseBuilder:
             "date":"Date",
             "timestamp":"TimeStamp",
             "boolean":"boolean",
-            "double precision": "double"
+            "json":"String",
+            "double precision": "double",
+            "bigint":"Long"
             }
                 
         self.db_postgres = {
@@ -46,7 +48,9 @@ class DataBaseBuilder:
             "boolean": "boolean",
             "date":"date",
             "timestamp":"timestamp",
-            "double precision": "double precision"
+            "double precision": "double precision",
+            "json":"json",
+            "bigint":"bigint"
             }
 
         self.crud_dict = {

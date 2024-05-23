@@ -35,7 +35,9 @@ class ApplicationBuilder:
             "date":"Date",
             "timestamp":"Timestamp",
             "double precision":"double",
+            "json":"String",
             "boolean":"boolean",
+            "bigint":"Long"
             }
 
     

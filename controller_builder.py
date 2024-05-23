@@ -35,7 +35,8 @@ class ControllerBuilder:
             "date":"Date",
             "timestamp":"TimeStamp",
             "double precision": "double",
-            "boolean":"boolean"
+            "boolean":"boolean",
+            "bigint":"Long"
             }
 
 

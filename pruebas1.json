@@ -6,17 +6,10 @@
   "db_port": 5432,
   "engine_databasename": "postgres",
   "dba_username": "postgres",
-<<<<<<< HEAD
-  "dba_password": "software23",
-  "app_database_name": "test",
-  "app_database_owner": "test",
-  "app_database_password": "test",
-=======
   "dba_password": "ia2023",
   "app_database_name": "agro",
   "app_database_owner": "agro",
   "app_database_password": "agro",
->>>>>>> 9f28555 (v1)
   "roles": [
     { "username": "agro", "password": "agro" },
     { "username": "agro_admin", "password": "agro_admin" },
@@ -73,15 +66,11 @@
         }
       ],
       "relations": [],
-<<<<<<< HEAD
+
       "grants":[
-          {"test_admin":["CREATE", "READ", "UPDATE", "DELETE"]},
-          {"test_client":["READ"]}
-=======
-      "grants": [
-        { "agro_admin": ["CREATE", "READ", "UPDATE", "DELETE"] },
-        { "agro_client": ["READ"] }
->>>>>>> 9f28555 (v1)
+          {"agro_admin":["CREATE", "READ", "UPDATE", "DELETE"]},
+          {"agro_client":["READ"]}
+
       ]
     },
     {
@@ -509,7 +498,7 @@
         {
           "name": "estrato",
           "data_type": "int",
-          "length": 0,
+          "length": 2,
           "pk": false,
           "fk": false,
           "unique": false,
@@ -550,7 +539,7 @@
         },
         {
           "name": "celular",
-          "data_type": "int",
+          "data_type": "bigint",
           "length": 10,
           "pk": false,
           "fk": false,
@@ -857,22 +846,8 @@
         {
           "agro_client": ["READ"]
         }
-<<<<<<< HEAD
-      ],
-      "relations": [
-        {
-          "local_attribute": "usuario",
-          "referenced_table": "usuario",
-          "referenced_attribute": "id"
-        }
-      ],
-       	"grants":[
-           	{"test_admin":["CREATE", "READ", "UPDATE", "DELETE"]},
-           	{"test_client":["READ"]}
-       	]
-=======
+
       ]
->>>>>>> 9f28555 (v1)
     },
 
     {
@@ -1681,31 +1656,31 @@
         },
         {
           "name": "geolocalizacion",
-          "data_type": "string",
-          "length": 255,
+          "data_type": "json",
+          "length": null,
           "pk": false,
           "fk": false,
           "unique": false,
           "not_null": false,
           "autoincrement": false,
-          "default": "",
+          "default": null,
           "range": "",
           "descripcion": "",
-          "encryted": false
+          "encrypted": false
         },
         {
           "name": "coordenadas",
-          "data_type": "string",
-          "length": 255,
+          "data_type": "json",
+          "length": null,
           "pk": false,
           "fk": false,
           "unique": false,
           "not_null": false,
           "autoincrement": false,
-          "default": "",
+          "default": null,
           "range": "",
           "descripcion": "",
-          "encryted": false
+          "encrypted": false
         },
         {
           "name": "area",
@@ -1931,28 +1906,28 @@
         },
         {
           "name": "geolocalizacion",
-          "data_type": "string",
-          "length": 255,
+          "data_type": "json",
+          "length": null,
           "pk": false,
           "fk": false,
           "unique": false,
           "not_null": false,
           "autoincrement": false,
-          "default": "",
+          "default": null,
           "range": "",
           "descripcion": "",
           "encrypted": false
         },
         {
           "name": "coordenadas",
-          "data_type": "string",
-          "length": 255,
+          "data_type": "json",
+          "length": null,
           "pk": false,
           "fk": false,
           "unique": false,
           "not_null": false,
           "autoincrement": false,
-          "default": "",
+          "default": null,
           "range": "",
           "descripcion": "",
           "encrypted": false
@@ -2166,29 +2141,29 @@
           "encrypted": false
         },
         {
-          "name": "geolocacizacion",
-          "data_type": "string",
-          "length": 255,
+          "name": "geolocalizacion",
+          "data_type": "json",
+          "length": null,
           "pk": false,
           "fk": false,
           "unique": false,
           "not_null": false,
           "autoincrement": false,
-          "default": "",
+          "default": null,
           "range": "",
           "descripcion": "",
           "encrypted": false
         },
         {
           "name": "coordenadas",
-          "data_type": "string",
-          "length": 255,
+          "data_type": "json",
+          "length": null,
           "pk": false,
           "fk": false,
           "unique": false,
           "not_null": false,
           "autoincrement": false,
-          "default": "",
+          "default": null,
           "range": "",
           "descripcion": "",
           "encrypted": false
@@ -2423,6 +2398,84 @@
         }
       ]
     },
+    {
+      "name": "evaluacion",
+      "descripcion": "",
+      "attributes": [
+        {
+          "name": "id",
+          "data_type": "int",
+          "length": 0,
+          "pk": true,
+          "fk": false,
+          "unique": true,
+          "not_null": true,
+          "autoincrement": true,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encrypted": false
+        },
+        {
+          "name": "nombre",
+          "data_type": "string",
+          "length": 100,
+          "pk": false,
+          "fk": false,
+          "unique": false,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encrypted": false
+        },
+        {
+          "name": "descripcion",
+          "data_type": "string",
+          "length": 255,
+          "pk": false,
+          "fk": false,
+          "unique": false,
+          "not_null": false,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "",
+          "encrypted": false
+        },
+        {
+          "name": "estado",
+          "data_type": "int",
+          "length": 0,
+          "pk": false,
+          "fk": false,
+          "unique": false,
+          "not_null": true,
+          "autoincrement": false,
+          "default": "",
+          "range": "",
+          "descripcion": "Referencia a la tabla estado",
+          "encrypted": false
+        }
+      ],
+      "relations": [
+        {
+          "local_attribute": "estado",
+          "referenced_table": "estado",
+          "referenced_attribute": "id"
+        }
+      ],
+      "grants": [
+        {
+          "test_admin": ["CREATE", "READ", "UPDATE", "DELETE"]
+        },
+        {
+          "test_client": ["READ"]
+        }
+      ]
+    },
+    
 
     {
       "name": "actividad_ocupacion",
@@ -2472,16 +2525,16 @@
         },
         {
           "name": "evaluacion",
-          "data_type": "string",
-          "length": 255,
+          "data_type": "int",
+          "length": 0,
           "pk": false,
-          "fk": false,
+          "fk": true,
           "unique": false,
           "not_null": false,
           "autoincrement": false,
           "default": "",
           "range": "",
-          "descripcion": "",
+          "descripcion": "Referencia a la tabla evaluacion",
           "encrypted": false
         }
       ],
@@ -2664,35 +2717,35 @@
           "descripcion": "Referencia a la tabla sede",
           "encrypted": false
         },
-        {
-          "name": "geolocalizacion",
-          "data_type": "string",
-          "length": 255,
-          "pk": false,
-          "fk": false,
-          "unique": false,
-          "not_null": false,
-          "autoincrement": false,
-          "default": "",
-          "range": "",
-          "descripcion": "",
-          "encrypted": false
-        },
-        {
-          "name": "coordenadas",
-          "data_type": "string",
-          "length": 255,
-          "pk": false,
-          "fk": false,
-          "unique": false,
-          "not_null": false,
-          "autoincrement": false,
-          "default": "",
-          "range": "",
-          "descripcion": "",
-          "encrypted": false
-        },
-        {
+         {
+           "name": "geolocalizacion",
+           "data_type": "json",
+           "length": null,
+           "pk": false,
+           "fk": false,
+           "unique": false,
+           "not_null": false,
+           "autoincrement": false,
+           "default": null,
+           "range": "",
+           "descripcion": "",
+           "encrypted": false
+         },
+         {
+           "name": "coordenadas",
+           "data_type": "json",
+           "length": null,
+           "pk": false,
+           "fk": false,
+           "unique": false,
+           "not_null": false,
+           "autoincrement": false,
+           "default": null,
+           "range": "",
+           "descripcion": "",
+           "encrypted": false
+         },
+         {
           "name": "descripcion",
           "data_type": "string",
           "length": 255,
@@ -3748,16 +3801,16 @@
         },
         {
           "name": "evaluacion",
-          "data_type": "string",
-          "length": 255,
+          "data_type": "int",
+          "length": 0,
           "pk": false,
-          "fk": false,
+          "fk": true,
           "unique": false,
           "not_null": false,
           "autoincrement": false,
           "default": "",
           "range": "",
-          "descripcion": "",
+          "descripcion": "Referencia a la tabla evaluacion",
           "encrypted": false
         },
         {

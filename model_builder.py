@@ -36,7 +36,9 @@ class ModelBuilder:
             "date":"Date",
             "timestamp":"Timestamp",
             "double precision":"double",
-            "boolean":"boolean"
+            "json":"String",
+            "boolean":"boolean",
+            "bigint":"Long"
             }
 
     

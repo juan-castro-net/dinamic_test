@@ -34,7 +34,9 @@ class JdbcRepositoryBuilder:
             "date":"Date",
             "timestamp":"TimeStamp",
             "double precision":"double",
-            "boolean":"boolean"
+            "json":"String",
+            "boolean":"boolean",
+            "bigint":"Long"
             }
     
     

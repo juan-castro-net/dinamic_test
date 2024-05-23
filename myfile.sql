@@ -104,20 +104,15 @@ DROP TABLE IF EXISTS public.persona;
 CREATE TABLE IF NOT EXISTS public.persona (
 	id serial,
 	tipo_identificacion int,
-<<<<<<< HEAD
-	num_identificacion character varying (20),
-	genero boolean,
-=======
 	identificacion character varying (20),
 	nombre character varying (100),
 	apellido character varying (100),
-	genero character,
->>>>>>> 9f28555 (v1)
+	genero boolean,
 	fecha_nacimiento date,
 	estrato int,
 	direccion character varying (255),
 	email_personal character varying (100),
-	celular int,
+	celular bigint,
 	estado int,
 CONSTRAINT persona_pkey PRIMARY KEY (id),
 CONSTRAINT persona_tipo_identificacion_id_fkey FOREIGN KEY (tipo_identificacion)
@@ -403,8 +398,8 @@ CREATE TABLE IF NOT EXISTS public.sede (
 	tipo_sede_id int,
 	nombre character varying (100),
 	municipio_id int,
-	geolocalizacion character varying (255),
-	coordenadas character varying (255),
+	geolocalizacion json,
+	coordenadas json,
 	area double precision,
 	comuna character varying (100),
 	descripcion character varying (255),
@@ -457,8 +452,8 @@ CREATE TABLE IF NOT EXISTS public.bloque (
 	sede_id int,
 	tipo_bloque_id int,
 	nombre character varying (100),
-	geolocalizacion character varying (255),
-	coordenadas character varying (255),
+	geolocalizacion json,
+	coordenadas json,
 	numero_pisos int,
 	descripcion character varying (255),
 	estado int,
@@ -510,8 +505,8 @@ CREATE TABLE IF NOT EXISTS public.espacio (
 	bloque_id int,
 	tipo_espacio_id int,
 	nombre character varying (100),
-	geolocacizacion character varying (255),
-	coordenadas character varying (255),
+	geolocalizacion json,
+	coordenadas json,
 	descripcion character varying (255),
 	estado int,
 CONSTRAINT espacio_pkey PRIMARY KEY (id),
@@ -581,12 +576,32 @@ ALTER TABLE IF EXISTS public.tipo_actividad
 GRANT insert, select, update, delete ON TABLE tipo_actividad TO agro_admin;
 GRANT select ON TABLE tipo_actividad TO agro_client;
 
+DROP TABLE IF EXISTS public.evaluacion;
+CREATE TABLE IF NOT EXISTS public.evaluacion (
+	id serial,
+	nombre character varying (100),
+	descripcion character varying (255),
+	estado int,
+CONSTRAINT evaluacion_pkey PRIMARY KEY (id),
+CONSTRAINT evaluacion_estado_id_fkey FOREIGN KEY (estado)
+	REFERENCES public.estado (id) MATCH SIMPLE
+	ON UPDATE NO ACTION
+	ON DELETE NO ACTION
+)
+WITH (
+OIDS=FALSE
+);
+ALTER TABLE IF EXISTS public.evaluacion
+ OWNER TO agro;
+GRANT insert, select, update, delete ON TABLE evaluacion TO test_admin;
+GRANT select ON TABLE evaluacion TO test_client;
+
 DROP TABLE IF EXISTS public.actividad_ocupacion;
 CREATE TABLE IF NOT EXISTS public.actividad_ocupacion (
 	id serial,
 	nombre character varying (100),
 	tipo_actividad_id int,
-	evaluacion character varying (255),
+	evaluacion int,
 CONSTRAINT actividad_ocupacion_pkey PRIMARY KEY (id),
 CONSTRAINT actividad_ocupacion_tipo_actividad_id_fkey FOREIGN KEY (tipo_actividad_id)
 	REFERENCES public.tipo_actividad (id) MATCH SIMPLE
@@ -636,8 +651,8 @@ CREATE TABLE IF NOT EXISTS public.almacen (
 	id serial,
 	nombre character varying (100),
 	sede_id int,
-	geolocalizacion character varying (255),
-	coordenadas character varying (255),
+	geolocalizacion json,
+	coordenadas json,
 	descripcion character varying (255),
 	estado int,
 CONSTRAINT almacen_pkey PRIMARY KEY (id),
@@ -905,7 +920,7 @@ CREATE TABLE IF NOT EXISTS public.espacio_actividad (
 	cantidad int,
 	unidad int,
 	precio double precision,
-	evaluacion character varying (255),
+	evaluacion int,
 	descripcion character varying (255),
 	estado int,
 CONSTRAINT espacio_actividad_pkey PRIMARY KEY (id),
