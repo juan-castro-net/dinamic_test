@@ -323,13 +323,13 @@ GRANT select ON TABLE sesion TO agro_client;
 DROP TABLE IF EXISTS public.empresa;
 CREATE TABLE IF NOT EXISTS public.empresa (
 	id serial,
-	tipo_identificacion int,
-	identificacion int,
+	tipo_identificacion_id int,
+	identificacion character varying (20),
 	nombre character varying (100),
 	descripcion character varying (255),
 	estado int,
 CONSTRAINT empresa_pkey PRIMARY KEY (id),
-CONSTRAINT empresa_tipo_identificacion_id_fkey FOREIGN KEY (tipo_identificacion)
+CONSTRAINT empresa_tipo_identificacion_id_fkey FOREIGN KEY (tipo_identificacion_id)
 	REFERENCES public.tipo_identificacion (id) MATCH SIMPLE
 	ON UPDATE NO ACTION
 	ON DELETE NO ACTION,
@@ -531,6 +531,152 @@ ALTER TABLE IF EXISTS public.espacio
 GRANT insert, select, update, delete ON TABLE espacio TO agro_admin;
 GRANT select ON TABLE espacio TO agro_client;
 
+DROP TABLE IF EXISTS public.tipo_produccion;
+CREATE TABLE IF NOT EXISTS public.tipo_produccion (
+	id serial,
+	nombre character varying (100),
+	descripcion character varying (255),
+	estado int,
+CONSTRAINT tipo_produccion_pkey PRIMARY KEY (id),
+CONSTRAINT tipo_produccion_estado_id_fkey FOREIGN KEY (estado)
+	REFERENCES public.estado (id) MATCH SIMPLE
+	ON UPDATE NO ACTION
+	ON DELETE NO ACTION
+)
+WITH (
+OIDS=FALSE
+);
+ALTER TABLE IF EXISTS public.tipo_produccion
+ OWNER TO agro;
+GRANT insert, select, update, delete ON TABLE tipo_produccion TO agro_admin;
+GRANT select ON TABLE tipo_produccion TO agro_client;
+
+DROP TABLE IF EXISTS public.proceso;
+CREATE TABLE IF NOT EXISTS public.proceso (
+	id serial,
+	tipo_produccion_id int,
+	nombre character varying (100),
+	descripcion character varying (255),
+	estado int,
+CONSTRAINT proceso_pkey PRIMARY KEY (id),
+CONSTRAINT proceso_tipo_produccion_id_fkey FOREIGN KEY (tipo_produccion_id)
+	REFERENCES public.tipo_produccion (id) MATCH SIMPLE
+	ON UPDATE NO ACTION
+	ON DELETE NO ACTION,
+CONSTRAINT proceso_estado_id_fkey FOREIGN KEY (estado)
+	REFERENCES public.estado (id) MATCH SIMPLE
+	ON UPDATE NO ACTION
+	ON DELETE NO ACTION
+)
+WITH (
+OIDS=FALSE
+);
+ALTER TABLE IF EXISTS public.proceso
+ OWNER TO agro;
+GRANT insert, select, update, delete ON TABLE proceso TO agro_admin;
+GRANT select ON TABLE proceso TO agro_client;
+
+DROP TABLE IF EXISTS public.tipo_produccion_proceso;
+CREATE TABLE IF NOT EXISTS public.tipo_produccion_proceso (
+	id serial,
+	tipo_produccion_id int,
+	proceso_id int,
+	descripcion character varying (255),
+	estado int,
+CONSTRAINT tipo_produccion_proceso_pkey PRIMARY KEY (id),
+CONSTRAINT tipo_produccion_proceso_tipo_produccion_id_fkey FOREIGN KEY (tipo_produccion_id)
+	REFERENCES public.tipo_produccion (id) MATCH SIMPLE
+	ON UPDATE NO ACTION
+	ON DELETE NO ACTION,
+CONSTRAINT tipo_produccion_proceso_proceso_id_fkey FOREIGN KEY (proceso_id)
+	REFERENCES public.proceso (id) MATCH SIMPLE
+	ON UPDATE NO ACTION
+	ON DELETE NO ACTION
+)
+WITH (
+OIDS=FALSE
+);
+ALTER TABLE IF EXISTS public.tipo_produccion_proceso
+ OWNER TO agro;
+GRANT insert, select, update, delete ON TABLE tipo_produccion_proceso TO test_admin;
+GRANT select ON TABLE tipo_produccion_proceso TO test_client;
+
+DROP TABLE IF EXISTS public.actividad_programacion;
+CREATE TABLE IF NOT EXISTS public.actividad_programacion (
+	id serial,
+	nombre character varying (100),
+	fecha_inicio date,
+	fecha_fin date,
+	tipo_produccion_proceso_id int,
+	descripcion character varying (255),
+	estado int,
+CONSTRAINT actividad_programacion_pkey PRIMARY KEY (id),
+CONSTRAINT actividad_programacion_tipo_produccion_proceso_id_fkey FOREIGN KEY (tipo_produccion_proceso_id)
+	REFERENCES public.tipo_produccion_proceso (id) MATCH SIMPLE
+	ON UPDATE NO ACTION
+	ON DELETE NO ACTION
+)
+WITH (
+OIDS=FALSE
+);
+ALTER TABLE IF EXISTS public.actividad_programacion
+ OWNER TO agro;
+GRANT insert, select, update, delete ON TABLE actividad_programacion TO test_admin;
+GRANT select ON TABLE actividad_programacion TO test_client;
+
+DROP TABLE IF EXISTS public.actividad_produccion;
+CREATE TABLE IF NOT EXISTS public.actividad_produccion (
+	id serial,
+	nombre character varying (100),
+	actividad_programacion_id int,
+	descripcion character varying (255),
+	estado int,
+CONSTRAINT actividad_produccion_pkey PRIMARY KEY (id),
+CONSTRAINT actividad_produccion_actividad_programacion_id_fkey FOREIGN KEY (actividad_programacion_id)
+	REFERENCES public.actividad_programacion (id) MATCH SIMPLE
+	ON UPDATE NO ACTION
+	ON DELETE NO ACTION
+)
+WITH (
+OIDS=FALSE
+);
+ALTER TABLE IF EXISTS public.actividad_produccion
+ OWNER TO agro;
+GRANT insert, select, update, delete ON TABLE actividad_produccion TO test_admin;
+GRANT select ON TABLE actividad_produccion TO test_client;
+
+DROP TABLE IF EXISTS public.produccion;
+CREATE TABLE IF NOT EXISTS public.produccion (
+	id serial,
+	nombre character varying (100),
+	tipo_produccion_id int,
+	descripcion character varying (255),
+	fecha_inicio date,
+	fecha_final date,
+	espacio_id int,
+	estado int,
+CONSTRAINT produccion_pkey PRIMARY KEY (id),
+CONSTRAINT produccion_tipo_produccion_id_fkey FOREIGN KEY (tipo_produccion_id)
+	REFERENCES public.tipo_produccion (id) MATCH SIMPLE
+	ON UPDATE NO ACTION
+	ON DELETE NO ACTION,
+CONSTRAINT produccion_espacio_id_fkey FOREIGN KEY (espacio_id)
+	REFERENCES public.espacio (id) MATCH SIMPLE
+	ON UPDATE NO ACTION
+	ON DELETE NO ACTION,
+CONSTRAINT produccion_estado_id_fkey FOREIGN KEY (estado)
+	REFERENCES public.estado (id) MATCH SIMPLE
+	ON UPDATE NO ACTION
+	ON DELETE NO ACTION
+)
+WITH (
+OIDS=FALSE
+);
+ALTER TABLE IF EXISTS public.produccion
+ OWNER TO agro;
+GRANT insert, select, update, delete ON TABLE produccion TO agro_admin;
+GRANT select ON TABLE produccion TO agro_client;
+
 DROP TABLE IF EXISTS public.categoria_actividad;
 CREATE TABLE IF NOT EXISTS public.categoria_actividad (
 	id serial,
@@ -555,12 +701,17 @@ DROP TABLE IF EXISTS public.tipo_actividad;
 CREATE TABLE IF NOT EXISTS public.tipo_actividad (
 	id serial,
 	categoria_actividad_id int,
+	proceso_id int,
 	nombre character varying (100),
 	descripcion character varying (255),
 	estado int,
 CONSTRAINT tipo_actividad_pkey PRIMARY KEY (id),
 CONSTRAINT tipo_actividad_categoria_actividad_id_fkey FOREIGN KEY (categoria_actividad_id)
 	REFERENCES public.categoria_actividad (id) MATCH SIMPLE
+	ON UPDATE NO ACTION
+	ON DELETE NO ACTION,
+CONSTRAINT tipo_actividad_proceso_id_fkey FOREIGN KEY (proceso_id)
+	REFERENCES public.proceso (id) MATCH SIMPLE
 	ON UPDATE NO ACTION
 	ON DELETE NO ACTION,
 CONSTRAINT tipo_actividad_estado_id_fkey FOREIGN KEY (estado)
@@ -575,6 +726,59 @@ ALTER TABLE IF EXISTS public.tipo_actividad
  OWNER TO agro;
 GRANT insert, select, update, delete ON TABLE tipo_actividad TO agro_admin;
 GRANT select ON TABLE tipo_actividad TO agro_client;
+
+DROP TABLE IF EXISTS public.tipo_costo_indirecto;
+CREATE TABLE IF NOT EXISTS public.tipo_costo_indirecto (
+	id serial,
+	nombre character varying (100),
+	descripcion character varying (255),
+	estado int,
+CONSTRAINT tipo_costo_indirecto_pkey PRIMARY KEY (id),
+CONSTRAINT tipo_costo_indirecto_estado_id_fkey FOREIGN KEY (estado)
+	REFERENCES public.estado (id) MATCH SIMPLE
+	ON UPDATE NO ACTION
+	ON DELETE NO ACTION
+)
+WITH (
+OIDS=FALSE
+);
+ALTER TABLE IF EXISTS public.tipo_costo_indirecto
+ OWNER TO agro;
+GRANT insert, select, update, delete ON TABLE tipo_costo_indirecto TO agro_admin;
+GRANT select ON TABLE tipo_costo_indirecto TO agro_client;
+
+DROP TABLE IF EXISTS public.costo_indirecto;
+CREATE TABLE IF NOT EXISTS public.costo_indirecto (
+	id serial,
+	espacio_id int,
+	tipo_costo_indirecto_id int,
+	fecha_inicio date,
+	fecha_fin date,
+	nombre character varying (100),
+	precio double precision,
+	descripcion character varying (255),
+	estado int,
+CONSTRAINT costo_indirecto_pkey PRIMARY KEY (id),
+CONSTRAINT costo_indirecto_espacio_id_fkey FOREIGN KEY (espacio_id)
+	REFERENCES public.espacio (id) MATCH SIMPLE
+	ON UPDATE NO ACTION
+	ON DELETE NO ACTION,
+CONSTRAINT costo_indirecto_tipo_costo_indirecto_id_fkey FOREIGN KEY (tipo_costo_indirecto_id)
+	REFERENCES public.tipo_costo_indirecto (id) MATCH SIMPLE
+	ON UPDATE NO ACTION
+	ON DELETE NO ACTION,
+CONSTRAINT costo_indirecto_estado_id_fkey FOREIGN KEY (estado)
+	REFERENCES public.estado (id) MATCH SIMPLE
+	ON UPDATE NO ACTION
+	ON DELETE NO ACTION
+)
+WITH (
+OIDS=FALSE
+);
+ALTER TABLE IF EXISTS public.costo_indirecto
+ OWNER TO agro;
+GRANT insert, select, update, delete ON TABLE costo_indirecto TO agro_admin;
+GRANT select ON TABLE costo_indirecto TO agro_client;
 
 DROP TABLE IF EXISTS public.evaluacion;
 CREATE TABLE IF NOT EXISTS public.evaluacion (
@@ -593,8 +797,8 @@ OIDS=FALSE
 );
 ALTER TABLE IF EXISTS public.evaluacion
  OWNER TO agro;
-GRANT insert, select, update, delete ON TABLE evaluacion TO test_admin;
-GRANT select ON TABLE evaluacion TO test_client;
+GRANT insert, select, update, delete ON TABLE evaluacion TO agro_admin;
+GRANT select ON TABLE evaluacion TO agro_client;
 
 DROP TABLE IF EXISTS public.actividad_ocupacion;
 CREATE TABLE IF NOT EXISTS public.actividad_ocupacion (

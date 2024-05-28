@@ -1,22 +1,3 @@
-{
-  "app_name": "agro",
-  "package_name": "org.usco",
-  "db_engine": "postgresql",
-  "db_host": "localhost",
-  "db_port": 5432,
-  "engine_databasename": "postgres",
-  "dba_username": "postgres",
-  "dba_password": "ia2023",
-  "app_database_name": "agro",
-  "app_database_owner": "agro",
-  "app_database_password": "agro",
-  "roles": [
-    { "username": "agro", "password": "agro" },
-    { "username": "agro_admin", "password": "agro_admin" },
-    { "username": "agro_client", "password": "agro_client" },
-    { "username": "agro_guest", "password": "agro_guest" }
-  ],
-
   "classes": [
     {
       "name": "estado",
@@ -431,7 +412,7 @@
           "length": 20,
           "pk": false,
           "fk": false,
-          "unique": true,
+          "unique": false,
           "not_null": true,
           "autoincrement": false,
           "default": "",
@@ -1314,7 +1295,7 @@
           "encryted": false
         },
         {
-          "name": "tipo_identificacion_id",
+          "name": "tipo_identificacion",
           "data_type": "int",
           "length": 0,
           "pk": false,
@@ -1329,7 +1310,7 @@
         },
         {
           "name": "identificacion",
-          "data_type": "string",
+          "data_type": "int",
           "length": 20,
           "pk": false,
           "fk": false,
@@ -1386,7 +1367,7 @@
       ],
       "relations": [
         {
-          "local_attribute": "tipo_identificacion_id",
+          "local_attribute": "tipo_identificacion",
           "referenced_table": "tipo_identificacion",
           "referenced_attribute": "id"
         },
@@ -4132,35 +4113,6 @@
           "encrypted": false
         },
         {
-          "name": "almacen_id",
-          "data_type": "int",
-          "length": 0,
-          "pk": false,
-          "fk": true,
-          "unique": false,
-          "not_null": true,
-          "autoincrement": false,
-          "default": "",
-          "range": "",
-          "descripcion": "Referencia a la tabla almacen",
-          "encrypted": false
-        },
-        {
-          "name": "espacio_id",
-          "data_type": "int",
-          "length": 0,
-          "pk": false,
-          "fk": true,
-          "unique": false,
-          "not_null": true,
-          "autoincrement": false,
-          "default": "",
-          "range": "",
-          "descripcion": "Referencia a la tabla espacio",
-          "encrypted": false
-        },
-
-        {
           "name": "fecha",
           "data_type": "date",
           "length": 0,
@@ -4207,16 +4159,6 @@
         {
           "local_attribute": "proveedor_id",
           "referenced_table": "proveedor",
-          "referenced_attribute": "id"
-        },
-        {
-          "local_attribute": "almacen_id",
-          "referenced_table": "almacen",
-          "referenced_attribute": "id"
-        },
-        {
-          "local_attribute": "espacio_id",
-          "referenced_table": "espacio",
           "referenced_attribute": "id"
         },
         {
@@ -4431,20 +4373,6 @@
           "encrypted": false
         },
         {
-          "name": "espacio_id",
-          "data_type": "int",
-          "length": 0,
-          "pk": false,
-          "fk": true,
-          "unique": false,
-          "not_null": true,
-          "autoincrement": false,
-          "default": "",
-          "range": "",
-          "descripcion": "Referencia a la tabla espacio",
-          "encrypted": false
-        },
-        {
           "name": "descripcion",
           "data_type": "string",
           "length": 255,
@@ -4482,11 +4410,6 @@
         {
           "local_attribute": "almacen_id",
           "referenced_table": "almacen",
-          "referenced_attribute": "id"
-        },
-        {
-          "local_attribute": "espacio_id",
-          "referenced_table": "espacio",
           "referenced_attribute": "id"
         },
         {
@@ -4812,4 +4735,3 @@
       ]
     }
   ]
-}
