@@ -14,14 +14,14 @@ public class JdbcAlmacen_salidaRepository implements Almacen_salidaRepository {
 	JdbcTemplate jdbcTemplate;
 
 	String CREATE_SQL = "INSERT INTO public.almacen_salida"
-		+ "(fecha, empresa_id, almacen_id, descripcion, estado)"
-		+ "VALUES (?, ?, ?, ?, ?)";
+		+ "(fecha, empresa_id, almacen_id, espacio_id, descripcion, estado)"
+		+ "VALUES (?, ?, ?, ?, ?, ?)";
 
-	String READ_SQL = "SELECT id, fecha, empresa_id, almacen_id, descripcion, estado"
+	String READ_SQL = "SELECT id, fecha, empresa_id, almacen_id, espacio_id, descripcion, estado"
 		+ " FROM public.almacen_salida";
 
 	String UPDATE_SQL = "UPDATE public.almacen_salida"
-		+ " SET fecha=?, empresa_id=?, almacen_id=?, descripcion=?, estado=?"
+		+ " SET fecha=?, empresa_id=?, almacen_id=?, espacio_id=?, descripcion=?, estado=?"
 		+ " WHERE id=?";
 
 	String DELETE_SQL = "DELETE FROM public.almacen_salida"
@@ -31,7 +31,7 @@ public class JdbcAlmacen_salidaRepository implements Almacen_salidaRepository {
 	@Override
 	public int create(Almacen_salida almacen_salida) {
 		return jdbcTemplate.update(CREATE_SQL,
-				new Object[] { almacen_salida.getFecha(), almacen_salida.getEmpresa_id(), almacen_salida.getAlmacen_id(), almacen_salida.getDescripcion(), almacen_salida.getEstado() });
+				new Object[] { almacen_salida.getFecha(), almacen_salida.getEmpresa_id(), almacen_salida.getAlmacen_id(), almacen_salida.getEspacio_id(), almacen_salida.getDescripcion(), almacen_salida.getEstado() });
 	}
 
 	@Override
@@ -41,7 +41,7 @@ public class JdbcAlmacen_salidaRepository implements Almacen_salidaRepository {
 
 	@Override
 	public int update(int id, Almacen_salida almacen_salida) {
-		return jdbcTemplate.update(UPDATE_SQL, new Object[] { almacen_salida.getFecha(), almacen_salida.getEmpresa_id(), almacen_salida.getAlmacen_id(), almacen_salida.getDescripcion(), almacen_salida.getEstado(), id });
+		return jdbcTemplate.update(UPDATE_SQL, new Object[] { almacen_salida.getFecha(), almacen_salida.getEmpresa_id(), almacen_salida.getAlmacen_id(), almacen_salida.getEspacio_id(), almacen_salida.getDescripcion(), almacen_salida.getEstado(), id });
 	}
 
 	@Override

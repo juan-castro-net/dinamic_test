@@ -1,8 +1,8 @@
-DROP DATABASE IF EXISTS agro;
-DROP DATABASE IF EXISTS agro;
-CREATE DATABASE agro
+DROP DATABASE IF EXISTS agrodev;
+DROP DATABASE IF EXISTS agrodev;
+CREATE DATABASE agrodev
  WITH
- OWNER = agro
+ OWNER = agrodev
  ENCODING = 'UTF8'
  TABLESPACE = pg_default
  CONNECTION LIMIT = -1;
@@ -18,7 +18,7 @@ WITH (
 OIDS=FALSE
 );
 ALTER TABLE IF EXISTS public.estado
- OWNER TO agro;
+ OWNER TO agrodev;
 GRANT insert, select, update, delete ON TABLE estado TO agro_admin;
 GRANT select ON TABLE estado TO agro_client;
 
@@ -34,7 +34,7 @@ WITH (
 OIDS=FALSE
 );
 ALTER TABLE IF EXISTS public.pais
- OWNER TO agro;
+ OWNER TO agrodev;
 GRANT insert, select, update, delete ON TABLE pais TO agro_admin;
 GRANT select ON TABLE pais TO agro_client;
 
@@ -55,7 +55,7 @@ WITH (
 OIDS=FALSE
 );
 ALTER TABLE IF EXISTS public.departamento
- OWNER TO agro;
+ OWNER TO agrodev;
 GRANT insert, select, update, delete ON TABLE departamento TO agro_admin;
 GRANT select ON TABLE departamento TO agro_client;
 
@@ -76,7 +76,7 @@ WITH (
 OIDS=FALSE
 );
 ALTER TABLE IF EXISTS public.municipio
- OWNER TO agro;
+ OWNER TO agrodev;
 GRANT insert, select, update, delete ON TABLE municipio TO agro_admin;
 GRANT select ON TABLE municipio TO agro_client;
 
@@ -96,7 +96,7 @@ WITH (
 OIDS=FALSE
 );
 ALTER TABLE IF EXISTS public.tipo_identificacion
- OWNER TO agro;
+ OWNER TO agrodev;
 GRANT insert, select, update, delete ON TABLE tipo_identificacion TO agro_admin;
 GRANT select ON TABLE tipo_identificacion TO agro_client;
 
@@ -128,7 +128,7 @@ WITH (
 OIDS=FALSE
 );
 ALTER TABLE IF EXISTS public.persona
- OWNER TO agro;
+ OWNER TO agrodev;
 GRANT insert, select, update, delete ON TABLE persona TO agro_admin;
 GRANT select ON TABLE persona TO agro_client;
 
@@ -153,7 +153,7 @@ WITH (
 OIDS=FALSE
 );
 ALTER TABLE IF EXISTS public.usuario
- OWNER TO agro;
+ OWNER TO agrodev;
 GRANT insert, select, update, delete ON TABLE usuario TO agro_admin;
 GRANT select ON TABLE usuario TO agro_client;
 
@@ -173,7 +173,7 @@ WITH (
 OIDS=FALSE
 );
 ALTER TABLE IF EXISTS public.perfil
- OWNER TO agro;
+ OWNER TO agrodev;
 GRANT insert, select, update, delete ON TABLE perfil TO agro_admin;
 GRANT select ON TABLE perfil TO agro_client;
 
@@ -201,7 +201,7 @@ WITH (
 OIDS=FALSE
 );
 ALTER TABLE IF EXISTS public.usuario_perfil
- OWNER TO agro;
+ OWNER TO agrodev;
 GRANT insert, select, update, delete ON TABLE usuario_perfil TO agro_admin;
 GRANT select ON TABLE usuario_perfil TO agro_client;
 
@@ -222,7 +222,7 @@ WITH (
 OIDS=FALSE
 );
 ALTER TABLE IF EXISTS public.modulo
- OWNER TO agro;
+ OWNER TO agrodev;
 GRANT insert, select, update, delete ON TABLE modulo TO agro_admin;
 GRANT select ON TABLE modulo TO agro_client;
 
@@ -242,7 +242,7 @@ WITH (
 OIDS=FALSE
 );
 ALTER TABLE IF EXISTS public.metodo
- OWNER TO agro;
+ OWNER TO agrodev;
 GRANT insert, select, update, delete ON TABLE metodo TO agro_admin;
 GRANT select ON TABLE metodo TO agro_client;
 
@@ -271,7 +271,7 @@ WITH (
 OIDS=FALSE
 );
 ALTER TABLE IF EXISTS public.modulo_metodo
- OWNER TO agro;
+ OWNER TO agrodev;
 GRANT insert, select, update, delete ON TABLE modulo_metodo TO agro_admin;
 GRANT select ON TABLE modulo_metodo TO agro_client;
 
@@ -295,7 +295,7 @@ WITH (
 OIDS=FALSE
 );
 ALTER TABLE IF EXISTS public.permisos
- OWNER TO agro;
+ OWNER TO agrodev;
 GRANT insert, select, update, delete ON TABLE permisos TO agro_admin;
 GRANT select ON TABLE permisos TO agro_client;
 
@@ -316,7 +316,7 @@ WITH (
 OIDS=FALSE
 );
 ALTER TABLE IF EXISTS public.sesion
- OWNER TO agro;
+ OWNER TO agrodev;
 GRANT insert, select, update, delete ON TABLE sesion TO agro_admin;
 GRANT select ON TABLE sesion TO agro_client;
 
@@ -342,7 +342,7 @@ WITH (
 OIDS=FALSE
 );
 ALTER TABLE IF EXISTS public.empresa
- OWNER TO agro;
+ OWNER TO agrodev;
 GRANT insert, select, update, delete ON TABLE empresa TO agro_admin;
 GRANT select ON TABLE empresa TO agro_client;
 
@@ -367,7 +367,7 @@ WITH (
 OIDS=FALSE
 );
 ALTER TABLE IF EXISTS public.grupo
- OWNER TO agro;
+ OWNER TO agrodev;
 GRANT insert, select, update, delete ON TABLE grupo TO agro_admin;
 GRANT select ON TABLE grupo TO agro_client;
 
@@ -387,7 +387,7 @@ WITH (
 OIDS=FALSE
 );
 ALTER TABLE IF EXISTS public.tipo_sede
- OWNER TO agro;
+ OWNER TO agrodev;
 GRANT insert, select, update, delete ON TABLE tipo_sede TO agro_admin;
 GRANT select ON TABLE tipo_sede TO agro_client;
 
@@ -422,7 +422,7 @@ WITH (
 OIDS=FALSE
 );
 ALTER TABLE IF EXISTS public.sede
- OWNER TO agro;
+ OWNER TO agrodev;
 GRANT insert, select, update, delete ON TABLE sede TO agro_admin;
 GRANT select ON TABLE sede TO agro_client;
 
@@ -442,7 +442,7 @@ WITH (
 OIDS=FALSE
 );
 ALTER TABLE IF EXISTS public.tipo_bloque
- OWNER TO agro;
+ OWNER TO agrodev;
 GRANT insert, select, update, delete ON TABLE tipo_bloque TO agro_admin;
 GRANT select ON TABLE tipo_bloque TO agro_client;
 
@@ -475,7 +475,7 @@ WITH (
 OIDS=FALSE
 );
 ALTER TABLE IF EXISTS public.bloque
- OWNER TO agro;
+ OWNER TO agrodev;
 GRANT insert, select, update, delete ON TABLE bloque TO agro_admin;
 GRANT select ON TABLE bloque TO agro_client;
 
@@ -495,7 +495,7 @@ WITH (
 OIDS=FALSE
 );
 ALTER TABLE IF EXISTS public.tipo_espacio
- OWNER TO agro;
+ OWNER TO agrodev;
 GRANT insert, select, update, delete ON TABLE tipo_espacio TO agro_admin;
 GRANT select ON TABLE tipo_espacio TO agro_client;
 
@@ -527,7 +527,7 @@ WITH (
 OIDS=FALSE
 );
 ALTER TABLE IF EXISTS public.espacio
- OWNER TO agro;
+ OWNER TO agrodev;
 GRANT insert, select, update, delete ON TABLE espacio TO agro_admin;
 GRANT select ON TABLE espacio TO agro_client;
 
@@ -547,7 +547,7 @@ WITH (
 OIDS=FALSE
 );
 ALTER TABLE IF EXISTS public.tipo_produccion
- OWNER TO agro;
+ OWNER TO agrodev;
 GRANT insert, select, update, delete ON TABLE tipo_produccion TO agro_admin;
 GRANT select ON TABLE tipo_produccion TO agro_client;
 
@@ -572,7 +572,7 @@ WITH (
 OIDS=FALSE
 );
 ALTER TABLE IF EXISTS public.proceso
- OWNER TO agro;
+ OWNER TO agrodev;
 GRANT insert, select, update, delete ON TABLE proceso TO agro_admin;
 GRANT select ON TABLE proceso TO agro_client;
 
@@ -597,7 +597,7 @@ WITH (
 OIDS=FALSE
 );
 ALTER TABLE IF EXISTS public.tipo_produccion_proceso
- OWNER TO agro;
+ OWNER TO agrodev;
 GRANT insert, select, update, delete ON TABLE tipo_produccion_proceso TO test_admin;
 GRANT select ON TABLE tipo_produccion_proceso TO test_client;
 
@@ -620,7 +620,7 @@ WITH (
 OIDS=FALSE
 );
 ALTER TABLE IF EXISTS public.actividad_programacion
- OWNER TO agro;
+ OWNER TO agrodev;
 GRANT insert, select, update, delete ON TABLE actividad_programacion TO test_admin;
 GRANT select ON TABLE actividad_programacion TO test_client;
 
@@ -641,7 +641,7 @@ WITH (
 OIDS=FALSE
 );
 ALTER TABLE IF EXISTS public.actividad_produccion
- OWNER TO agro;
+ OWNER TO agrodev;
 GRANT insert, select, update, delete ON TABLE actividad_produccion TO test_admin;
 GRANT select ON TABLE actividad_produccion TO test_client;
 
@@ -673,7 +673,7 @@ WITH (
 OIDS=FALSE
 );
 ALTER TABLE IF EXISTS public.produccion
- OWNER TO agro;
+ OWNER TO agrodev;
 GRANT insert, select, update, delete ON TABLE produccion TO agro_admin;
 GRANT select ON TABLE produccion TO agro_client;
 
@@ -693,7 +693,7 @@ WITH (
 OIDS=FALSE
 );
 ALTER TABLE IF EXISTS public.categoria_actividad
- OWNER TO agro;
+ OWNER TO agrodev;
 GRANT insert, select, update, delete ON TABLE categoria_actividad TO agro_admin;
 GRANT select ON TABLE categoria_actividad TO agro_client;
 
@@ -723,7 +723,7 @@ WITH (
 OIDS=FALSE
 );
 ALTER TABLE IF EXISTS public.tipo_actividad
- OWNER TO agro;
+ OWNER TO agrodev;
 GRANT insert, select, update, delete ON TABLE tipo_actividad TO agro_admin;
 GRANT select ON TABLE tipo_actividad TO agro_client;
 
@@ -743,7 +743,7 @@ WITH (
 OIDS=FALSE
 );
 ALTER TABLE IF EXISTS public.tipo_costo_indirecto
- OWNER TO agro;
+ OWNER TO agrodev;
 GRANT insert, select, update, delete ON TABLE tipo_costo_indirecto TO agro_admin;
 GRANT select ON TABLE tipo_costo_indirecto TO agro_client;
 
@@ -776,7 +776,7 @@ WITH (
 OIDS=FALSE
 );
 ALTER TABLE IF EXISTS public.costo_indirecto
- OWNER TO agro;
+ OWNER TO agrodev;
 GRANT insert, select, update, delete ON TABLE costo_indirecto TO agro_admin;
 GRANT select ON TABLE costo_indirecto TO agro_client;
 
@@ -796,7 +796,7 @@ WITH (
 OIDS=FALSE
 );
 ALTER TABLE IF EXISTS public.evaluacion
- OWNER TO agro;
+ OWNER TO agrodev;
 GRANT insert, select, update, delete ON TABLE evaluacion TO agro_admin;
 GRANT select ON TABLE evaluacion TO agro_client;
 
@@ -816,7 +816,7 @@ WITH (
 OIDS=FALSE
 );
 ALTER TABLE IF EXISTS public.actividad_ocupacion
- OWNER TO agro;
+ OWNER TO agrodev;
 GRANT insert, select, update, delete ON TABLE actividad_ocupacion TO agro_admin;
 GRANT select ON TABLE actividad_ocupacion TO agro_client;
 
@@ -846,7 +846,7 @@ WITH (
 OIDS=FALSE
 );
 ALTER TABLE IF EXISTS public.espacio_ocupacion
- OWNER TO agro;
+ OWNER TO agrodev;
 GRANT insert, select, update, delete ON TABLE espacio_ocupacion TO agro_admin;
 GRANT select ON TABLE espacio_ocupacion TO agro_client;
 
@@ -873,7 +873,7 @@ WITH (
 OIDS=FALSE
 );
 ALTER TABLE IF EXISTS public.almacen
- OWNER TO agro;
+ OWNER TO agrodev;
 GRANT insert, select, update, delete ON TABLE almacen TO agro_admin;
 GRANT select ON TABLE almacen TO agro_client;
 
@@ -893,7 +893,7 @@ WITH (
 OIDS=FALSE
 );
 ALTER TABLE IF EXISTS public.producto_categoria
- OWNER TO agro;
+ OWNER TO agrodev;
 GRANT insert, select, update, delete ON TABLE producto_categoria TO agro_admin;
 GRANT select ON TABLE producto_categoria TO agro_client;
 
@@ -912,7 +912,7 @@ WITH (
 OIDS=FALSE
 );
 ALTER TABLE IF EXISTS public.producto
- OWNER TO agro;
+ OWNER TO agrodev;
 GRANT insert, select, update, delete ON TABLE producto TO agro_admin;
 GRANT select ON TABLE producto TO agro_client;
 
@@ -937,7 +937,7 @@ WITH (
 OIDS=FALSE
 );
 ALTER TABLE IF EXISTS public.producto_presentacion
- OWNER TO agro;
+ OWNER TO agrodev;
 GRANT insert, select, update, delete ON TABLE producto_presentacion TO agro_admin;
 GRANT select ON TABLE producto_presentacion TO agro_client;
 
@@ -962,7 +962,7 @@ WITH (
 OIDS=FALSE
 );
 ALTER TABLE IF EXISTS public.producto_presentacion
- OWNER TO agro;
+ OWNER TO agrodev;
 GRANT insert, select, update, delete ON TABLE producto_presentacion TO agro_admin;
 GRANT select ON TABLE producto_presentacion TO agro_client;
 
@@ -986,7 +986,7 @@ WITH (
 OIDS=FALSE
 );
 ALTER TABLE IF EXISTS public.proveedor
- OWNER TO agro;
+ OWNER TO agrodev;
 GRANT insert, select, update, delete ON TABLE proveedor TO agro_admin;
 GRANT select ON TABLE proveedor TO agro_client;
 
@@ -994,12 +994,22 @@ DROP TABLE IF EXISTS public.almacen_entrada;
 CREATE TABLE IF NOT EXISTS public.almacen_entrada (
 	id serial,
 	proveedor_id int,
+	almacen_id int,
+	espacio_id int,
 	fecha date,
 	descripcion character varying (255),
 	estado int,
 CONSTRAINT almacen_entrada_pkey PRIMARY KEY (id),
 CONSTRAINT almacen_entrada_proveedor_id_fkey FOREIGN KEY (proveedor_id)
 	REFERENCES public.proveedor (id) MATCH SIMPLE
+	ON UPDATE NO ACTION
+	ON DELETE NO ACTION,
+CONSTRAINT almacen_entrada_almacen_id_fkey FOREIGN KEY (almacen_id)
+	REFERENCES public.almacen (id) MATCH SIMPLE
+	ON UPDATE NO ACTION
+	ON DELETE NO ACTION,
+CONSTRAINT almacen_entrada_espacio_id_fkey FOREIGN KEY (espacio_id)
+	REFERENCES public.espacio (id) MATCH SIMPLE
 	ON UPDATE NO ACTION
 	ON DELETE NO ACTION,
 CONSTRAINT almacen_entrada_estado_id_fkey FOREIGN KEY (estado)
@@ -1011,7 +1021,7 @@ WITH (
 OIDS=FALSE
 );
 ALTER TABLE IF EXISTS public.almacen_entrada
- OWNER TO agro;
+ OWNER TO agrodev;
 GRANT insert, select, update, delete ON TABLE almacen_entrada TO agro_admin;
 GRANT select ON TABLE almacen_entrada TO agro_client;
 
@@ -1046,7 +1056,7 @@ WITH (
 OIDS=FALSE
 );
 ALTER TABLE IF EXISTS public.almacen_entrada_item
- OWNER TO agro;
+ OWNER TO agrodev;
 GRANT insert, select, update, delete ON TABLE almacen_entrada_item TO agro_admin;
 GRANT select ON TABLE almacen_entrada_item TO agro_client;
 
@@ -1056,6 +1066,7 @@ CREATE TABLE IF NOT EXISTS public.almacen_salida (
 	fecha date,
 	empresa_id int,
 	almacen_id int,
+	espacio_id int,
 	descripcion character varying (255),
 	estado int,
 CONSTRAINT almacen_salida_pkey PRIMARY KEY (id),
@@ -1067,6 +1078,10 @@ CONSTRAINT almacen_salida_almacen_id_fkey FOREIGN KEY (almacen_id)
 	REFERENCES public.almacen (id) MATCH SIMPLE
 	ON UPDATE NO ACTION
 	ON DELETE NO ACTION,
+CONSTRAINT almacen_salida_espacio_id_fkey FOREIGN KEY (espacio_id)
+	REFERENCES public.espacio (id) MATCH SIMPLE
+	ON UPDATE NO ACTION
+	ON DELETE NO ACTION,
 CONSTRAINT almacen_salida_estado_id_fkey FOREIGN KEY (estado)
 	REFERENCES public.estado (id) MATCH SIMPLE
 	ON UPDATE NO ACTION
@@ -1076,7 +1091,7 @@ WITH (
 OIDS=FALSE
 );
 ALTER TABLE IF EXISTS public.almacen_salida
- OWNER TO agro;
+ OWNER TO agrodev;
 GRANT insert, select, update, delete ON TABLE almacen_salida TO agro_admin;
 GRANT select ON TABLE almacen_salida TO agro_client;
 
@@ -1111,7 +1126,7 @@ WITH (
 OIDS=FALSE
 );
 ALTER TABLE IF EXISTS public.almacen_salida_item
- OWNER TO agro;
+ OWNER TO agrodev;
 GRANT insert, select, update, delete ON TABLE almacen_salida_item TO agro_admin;
 GRANT select ON TABLE almacen_salida_item TO agro_client;
 
@@ -1145,6 +1160,6 @@ WITH (
 OIDS=FALSE
 );
 ALTER TABLE IF EXISTS public.espacio_actividad
- OWNER TO agro;
+ OWNER TO agrodev;
 GRANT insert, select, update, delete ON TABLE espacio_actividad TO agro_admin;
 GRANT select ON TABLE espacio_actividad TO agro_client;

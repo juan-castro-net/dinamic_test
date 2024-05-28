@@ -9,6 +9,7 @@ public class Almacen_salida {
 	private Date fecha;
 	private int empresa_id;
 	private int almacen_id;
+	private int espacio_id;
 	private String descripcion;
 	private int estado;
 
@@ -18,22 +19,24 @@ public class Almacen_salida {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Almacen_salida(int id, Date fecha, int empresa_id, int almacen_id, String descripcion, int estado) {
+	public Almacen_salida(int id, Date fecha, int empresa_id, int almacen_id, int espacio_id, String descripcion, int estado) {
 		super();
 		this.id = id;
 		this.fecha = fecha;
 		this.empresa_id = empresa_id;
 		this.almacen_id = almacen_id;
+		this.espacio_id = espacio_id;
 		this.descripcion = descripcion;
 		this.estado = estado;
 
 	}
 
-	public Almacen_salida(Date fecha, int empresa_id, int almacen_id, String descripcion, int estado) {
+	public Almacen_salida(Date fecha, int empresa_id, int almacen_id, int espacio_id, String descripcion, int estado) {
 		super();
 		this.fecha = fecha;
 		this.empresa_id = empresa_id;
 		this.almacen_id = almacen_id;
+		this.espacio_id = espacio_id;
 		this.descripcion = descripcion;
 		this.estado = estado;
 
@@ -67,6 +70,13 @@ public class Almacen_salida {
 	public void setAlmacen_id(int almacen_id) {
 		this.almacen_id = almacen_id;
 	}
+	public int getEspacio_id() {
+		return espacio_id;
+	}
+
+	public void setEspacio_id(int espacio_id) {
+		this.espacio_id = espacio_id;
+	}
 	public String getDescripcion() {
 		return descripcion;
 	}
@@ -85,7 +95,7 @@ public class Almacen_salida {
     
 	@Override
 	public String toString() {
-		return "Almacen_salida [id=" + id + ", fecha=" + fecha + ", empresa_id=" + empresa_id + ", almacen_id=" + almacen_id + ", descripcion=" + descripcion + ", estado=" + estado + "]";
+		return "Almacen_salida [id=" + id + ", fecha=" + fecha + ", empresa_id=" + empresa_id + ", almacen_id=" + almacen_id + ", espacio_id=" + espacio_id + ", descripcion=" + descripcion + ", estado=" + estado + "]";
 	}
 	
 }

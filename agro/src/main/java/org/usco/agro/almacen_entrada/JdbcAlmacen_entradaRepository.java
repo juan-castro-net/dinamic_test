@@ -14,14 +14,14 @@ public class JdbcAlmacen_entradaRepository implements Almacen_entradaRepository 
 	JdbcTemplate jdbcTemplate;
 
 	String CREATE_SQL = "INSERT INTO public.almacen_entrada"
-		+ "(proveedor_id, fecha, descripcion, estado)"
-		+ "VALUES (?, ?, ?, ?)";
+		+ "(proveedor_id, almacen_id, espacio_id, fecha, descripcion, estado)"
+		+ "VALUES (?, ?, ?, ?, ?, ?)";
 
-	String READ_SQL = "SELECT id, proveedor_id, fecha, descripcion, estado"
+	String READ_SQL = "SELECT id, proveedor_id, almacen_id, espacio_id, fecha, descripcion, estado"
 		+ " FROM public.almacen_entrada";
 
 	String UPDATE_SQL = "UPDATE public.almacen_entrada"
-		+ " SET proveedor_id=?, fecha=?, descripcion=?, estado=?"
+		+ " SET proveedor_id=?, almacen_id=?, espacio_id=?, fecha=?, descripcion=?, estado=?"
 		+ " WHERE id=?";
 
 	String DELETE_SQL = "DELETE FROM public.almacen_entrada"
@@ -31,7 +31,7 @@ public class JdbcAlmacen_entradaRepository implements Almacen_entradaRepository 
 	@Override
 	public int create(Almacen_entrada almacen_entrada) {
 		return jdbcTemplate.update(CREATE_SQL,
-				new Object[] { almacen_entrada.getProveedor_id(), almacen_entrada.getFecha(), almacen_entrada.getDescripcion(), almacen_entrada.getEstado() });
+				new Object[] { almacen_entrada.getProveedor_id(), almacen_entrada.getAlmacen_id(), almacen_entrada.getEspacio_id(), almacen_entrada.getFecha(), almacen_entrada.getDescripcion(), almacen_entrada.getEstado() });
 	}
 
 	@Override
@@ -41,7 +41,7 @@ public class JdbcAlmacen_entradaRepository implements Almacen_entradaRepository 
 
 	@Override
 	public int update(int id, Almacen_entrada almacen_entrada) {
-		return jdbcTemplate.update(UPDATE_SQL, new Object[] { almacen_entrada.getProveedor_id(), almacen_entrada.getFecha(), almacen_entrada.getDescripcion(), almacen_entrada.getEstado(), id });
+		return jdbcTemplate.update(UPDATE_SQL, new Object[] { almacen_entrada.getProveedor_id(), almacen_entrada.getAlmacen_id(), almacen_entrada.getEspacio_id(), almacen_entrada.getFecha(), almacen_entrada.getDescripcion(), almacen_entrada.getEstado(), id });
 	}
 
 	@Override

@@ -28,7 +28,7 @@ public class Almacen_entradaController {
 	public ResponseEntity<String> createAlmacen_entrada(@RequestBody Almacen_entrada almacen_entrada) {
 		try {
 			almacen_entradaRepository.create(
-					new Almacen_entrada(almacen_entrada.getProveedor_id(), almacen_entrada.getFecha(), almacen_entrada.getDescripcion(), almacen_entrada.getEstado()));
+					new Almacen_entrada(almacen_entrada.getProveedor_id(), almacen_entrada.getAlmacen_id(), almacen_entrada.getEspacio_id(), almacen_entrada.getFecha(), almacen_entrada.getDescripcion(), almacen_entrada.getEstado()));
 			return new ResponseEntity<>("Almacen_entrada creado con exito", HttpStatus.CREATED);
 		} catch (Exception e) {
 			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
@@ -57,7 +57,7 @@ public class Almacen_entradaController {
 			@RequestBody Almacen_entrada almacen_entrada) {
 		try {
 			almacen_entradaRepository.update(id,
-					new Almacen_entrada(almacen_entrada.getProveedor_id(), almacen_entrada.getFecha(), almacen_entrada.getDescripcion(), almacen_entrada.getEstado()));
+					new Almacen_entrada(almacen_entrada.getProveedor_id(), almacen_entrada.getAlmacen_id(), almacen_entrada.getEspacio_id(), almacen_entrada.getFecha(), almacen_entrada.getDescripcion(), almacen_entrada.getEstado()));
 			return new ResponseEntity<>("Almacen_entrada actualizado con exito", HttpStatus.CREATED);
 		} catch (Exception e) {
 			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);

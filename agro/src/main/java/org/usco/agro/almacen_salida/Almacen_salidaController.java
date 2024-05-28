@@ -28,7 +28,7 @@ public class Almacen_salidaController {
 	public ResponseEntity<String> createAlmacen_salida(@RequestBody Almacen_salida almacen_salida) {
 		try {
 			almacen_salidaRepository.create(
-					new Almacen_salida(almacen_salida.getFecha(), almacen_salida.getEmpresa_id(), almacen_salida.getAlmacen_id(), almacen_salida.getDescripcion(), almacen_salida.getEstado()));
+					new Almacen_salida(almacen_salida.getFecha(), almacen_salida.getEmpresa_id(), almacen_salida.getAlmacen_id(), almacen_salida.getEspacio_id(), almacen_salida.getDescripcion(), almacen_salida.getEstado()));
 			return new ResponseEntity<>("Almacen_salida creado con exito", HttpStatus.CREATED);
 		} catch (Exception e) {
 			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
@@ -57,7 +57,7 @@ public class Almacen_salidaController {
 			@RequestBody Almacen_salida almacen_salida) {
 		try {
 			almacen_salidaRepository.update(id,
-					new Almacen_salida(almacen_salida.getFecha(), almacen_salida.getEmpresa_id(), almacen_salida.getAlmacen_id(), almacen_salida.getDescripcion(), almacen_salida.getEstado()));
+					new Almacen_salida(almacen_salida.getFecha(), almacen_salida.getEmpresa_id(), almacen_salida.getAlmacen_id(), almacen_salida.getEspacio_id(), almacen_salida.getDescripcion(), almacen_salida.getEstado()));
 			return new ResponseEntity<>("Almacen_salida actualizado con exito", HttpStatus.CREATED);
 		} catch (Exception e) {
 			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
