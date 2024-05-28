@@ -7,11 +7,11 @@
   "engine_databasename": "postgres",
   "dba_username": "postgres",
   "dba_password": "ia2023",
-  "app_database_name": "agro",
-  "app_database_owner": "agro",
-  "app_database_password": "agro",
+  "app_database_name": "agrodev",
+  "app_database_owner": "agrodev",
+  "app_database_password": "agrodev",
   "roles": [
-    { "username": "agro", "password": "agro" },
+    { "username": "agrodev", "password": "agrodev" },
     { "username": "agro_admin", "password": "agro_admin" },
     { "username": "agro_client", "password": "agro_client" },
     { "username": "agro_guest", "password": "agro_guest" }
